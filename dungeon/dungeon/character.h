@@ -1,6 +1,6 @@
 #include <iostream>
 
-class character{
+class Character{
 
 public:
 	int getLifePoints();

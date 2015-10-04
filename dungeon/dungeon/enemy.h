@@ -1,7 +1,7 @@
-#include "character.h"
+#include "Character.h"
 #include <iostream>
 
-class enemy: public character{
+class Enemy: public Character{
 public:
 	std::string getDescription();
 private:

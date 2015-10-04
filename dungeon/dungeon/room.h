@@ -1,19 +1,19 @@
 #include <iostream>
 #include <map>
 #include <list>
-#include "enemy.h"
-#include "item.h"
-#include "trap.h"
+#include "Enemy.h"
+#include "Item.h"
+#include "Trap.h"
 
-class room{
+class Room{
 public:
 	std::string getDescription();
 
 
 private:
 	std::string description;
-	std::map<std::string, room> neighbors;
-	std::list<enemy> enemies;
-	std::list<item> items;
+	std::map<std::string, Room> neighbors;
+	std::list<Enemy> enemies;
+	std::list<Item> items;
 	Trap trap;
 };

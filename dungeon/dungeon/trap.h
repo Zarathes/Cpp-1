@@ -7,5 +7,5 @@ private:
 	std::string description;
 	int attackPower;
 	int counterPerceptionPoints;
-	trigger trigger;
+	//Trigger trigger;
 };
