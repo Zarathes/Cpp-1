@@ -1,4 +1,4 @@
 #include "Item.h"
-class Equipable:public Item{
+class Equipable: public Item{
 
 };

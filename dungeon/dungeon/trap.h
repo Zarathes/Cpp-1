@@ -2,6 +2,8 @@
 
 class Trap{
 public:
+	std::string getName();
+	std::string getDescription();
 private:
 	std::string name;
 	std::string description;
