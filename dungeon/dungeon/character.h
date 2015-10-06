@@ -1,3 +1,6 @@
+#ifndef __character__
+#define __character__
+
 #include <iostream>
 
 class Character{
@@ -15,3 +18,5 @@ protected:
 private: 
 	
 };
+
+#endif

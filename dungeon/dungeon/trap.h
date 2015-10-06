@@ -1,6 +1,9 @@
+#ifndef __trap__
+#define __trap__
+
 #include <iostream>
 
-class Trap{
+class Trap {
 public:
 	std::string getName();
 	std::string getDescription();
@@ -11,3 +14,5 @@ private:
 	int counterPerceptionPoints;
 	//Trigger trigger;
 };
+
+#endif

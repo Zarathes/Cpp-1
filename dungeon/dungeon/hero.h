@@ -1,3 +1,7 @@
+#ifndef __hero__
+#define __hero__
+
+
 #include <iostream>
 #include <list>
 #include "Character.h"
@@ -5,7 +9,7 @@
 #include "Item.h"
 #include "Equipable.h"
 
-class Hero: Character{
+class Hero: public Character{
 public:
 	int getExperiancePoints();
 	int getPerceptionPoints();
@@ -20,3 +24,5 @@ private:
 	std::list<Equipable> equipment;
 	Room currentRoom;
 };
+
+#endif
