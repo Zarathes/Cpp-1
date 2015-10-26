@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __game__
+#define __game__
 #include <iostream>
 #include <map>
 
@@ -17,3 +18,4 @@ private:
 	void handelAction(std::string action);
 };
 
+#endif

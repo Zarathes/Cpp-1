@@ -3,7 +3,7 @@
 
 #include "Hero.h"
 #include "Enemy.h"
-#include<list>
+#include <list>
 
 class Fight{
 private:
