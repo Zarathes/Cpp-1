@@ -13,7 +13,8 @@ class Room{
 public:
 	std::string getDescription();
 	void setNeighbours(Exits exit, Room room);
-
+	void addEnemy(Enemy enemy);
+	void addItem(Item item);
 private:
 	std::string description;
 	std::map<Exits, Room> neighbors;
