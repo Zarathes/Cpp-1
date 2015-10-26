@@ -13,69 +13,99 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Item">
+    <Filter Include="Models">
+      <UniqueIdentifier>{0b73abdc-ced5-499a-9bb0-d472cc29b631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Header Files">
+      <UniqueIdentifier>{5b154db5-655b-4820-a576-6cccb70a7fad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Header Files\Character">
+      <UniqueIdentifier>{8c7ea334-6e97-41d8-83c7-46dbd55d96f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Header Files\Item">
       <UniqueIdentifier>{1605a5b1-ac8f-4968-995f-411be64e3e73}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Character">
-      <UniqueIdentifier>{8c7ea334-6e97-41d8-83c7-46dbd55d96f5}</UniqueIdentifier>
+    <Filter Include="Models\Source Files">
+      <UniqueIdentifier>{bef25858-d579-4cb8-a438-de74c9779293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Source Files\Character">
+      <UniqueIdentifier>{0a54398c-cb8e-4871-a7e5-08470d90c5b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Source Files\Item">
+      <UniqueIdentifier>{ac1f1e6d-9faa-4d22-a01a-03d471c08b32}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Room.h">
+      <Filter>Models\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
+      <Filter>Models\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Room.h">
-      <Filter>Header Files</Filter>
+      <Filter>Models\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Trap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipable.h">
-      <Filter>Header Files\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Consumable.h">
-      <Filter>Header Files\Item</Filter>
+      <Filter>Models\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>Header Files\Character</Filter>
+      <Filter>Models\Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Consumable.h">
+      <Filter>Models\Header Files\Item</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Character</Filter>
+      <Filter>Models\Header Files\Character</Filter>
     </ClInclude>
-    <ClInclude Include="Hero.h">
-      <Filter>Header Files\Character</Filter>
+    <ClInclude Include="Equipable.h">
+      <Filter>Models\Header Files\Item</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hero.h">
+      <Filter>Models\Header Files\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Models\Header Files\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
+      <Filter>Models\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Room.cpp">
+      <Filter>Models\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dungeon.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Character.cpp">
+      <Filter>Models\Source Files\Character</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Models\Source Files\Character</Filter>
     </ClCompile>
     <ClCompile Include="Hero.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Models\Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipable.cpp">
+      <Filter>Models\Source Files\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Models\Source Files\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Consumable.cpp">
+      <Filter>Models\Source Files\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Exits.cpp">
+      <Filter>Models\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
