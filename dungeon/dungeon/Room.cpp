@@ -6,5 +6,5 @@ std::string Room::getDescription(){
 }
 
 void Room::setNeighbours(Exits exit, Room room){
-	//neighbors.insert(exit, room);
+	neighbors[exit] = room;
 }
