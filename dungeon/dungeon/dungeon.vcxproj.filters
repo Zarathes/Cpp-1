@@ -34,9 +34,42 @@
     <Filter Include="Models\Source Files\Item">
       <UniqueIdentifier>{ac1f1e6d-9faa-4d22-a01a-03d471c08b32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models\Header Files\Stairs">
+      <UniqueIdentifier>{1a349787-ad81-4254-a861-05d3a8e61d6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Source Files\Stairs">
+      <UniqueIdentifier>{ce260be5-60fb-4dbd-ac2a-4fc6d50e1ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TextFiles">
+      <UniqueIdentifier>{cc92b970-182a-4128-9166-e6177fdd7f57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TextFiles\Room">
+      <UniqueIdentifier>{5ad8752e-edd6-4171-8cb6-1d43d5640bd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TextFiles\Item">
+      <UniqueIdentifier>{70b46982-7833-4535-843b-65e4b156ba42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TextFiles\Enemy">
+      <UniqueIdentifier>{9979351d-1537-463f-996d-a4a5e185bc8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="..\size.txt">
+      <Filter>TextFiles\Room</Filter>
+    </Text>
+    <Text Include="..\lightning.txt">
+      <Filter>TextFiles\Room</Filter>
+    </Text>
+    <Text Include="..\state.txt">
+      <Filter>TextFiles\Room</Filter>
+    </Text>
+    <Text Include="..\furniture.txt">
+      <Filter>TextFiles\Room</Filter>
+    </Text>
+    <Text Include="..\attacks.txt">
+      <Filter>TextFiles\Enemy</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Room.h">
@@ -72,6 +105,21 @@
     <ClInclude Include="Item.h">
       <Filter>Models\Header Files\Item</Filter>
     </ClInclude>
+    <ClInclude Include="RoomController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stairs.h">
+      <Filter>Models\Header Files\Stairs</Filter>
+    </ClInclude>
+    <ClInclude Include="StairsUp.h">
+      <Filter>Models\Header Files\Stairs</Filter>
+    </ClInclude>
+    <ClInclude Include="StairsDown.h">
+      <Filter>Models\Header Files\Stairs</Filter>
+    </ClInclude>
+    <ClInclude Include="ReadTextFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -106,6 +154,21 @@
     </ClCompile>
     <ClCompile Include="Exits.cpp">
       <Filter>Models\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stairs.cpp">
+      <Filter>Models\Source Files\Stairs</Filter>
+    </ClCompile>
+    <ClCompile Include="StairsUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StairsDown.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReadTextFile.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

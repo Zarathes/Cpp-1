@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <map>
-#include <list>
+#include <vector>
 #include "Enemy.h"
 #include "Item.h"
 #include "Trap.h"
@@ -11,15 +11,17 @@
 
 class Room{
 public:
+	void setDescription(std::string newDescr);
 	std::string getDescription();
 	void setNeighbours(Exits exit, Room room);
 	void addEnemy(Enemy enemy);
+	void deleteEnemy(Enemy enemy);
 	void addItem(Item item);
 private:
 	std::string description;
 	std::map<Exits, Room> neighbors;
-	std::list<Enemy> enemies;
-	std::list<Item> items;
+	std::vector<Enemy> enemies;
+	std::vector<Item> items;
 	Trap trap;
 };
 

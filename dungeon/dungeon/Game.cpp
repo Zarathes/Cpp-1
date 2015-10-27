@@ -14,6 +14,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+#include "RoomController.h"
+
 //exceptions
 using std::invalid_argument;
 using std::out_of_range;
@@ -32,6 +34,9 @@ Game::Game() : running{ true }
 	actions.insert(pair<int, string>(7, string("Change Room")));
 	actions.insert(pair<int, string>(8, string("Stairs Up")));
 	actions.insert(pair<int, string>(9, string("Stairs Down")));
+
+	RoomController *roomController = new RoomController();
+	roomController->createDungeon(1,5);
 
 	while (running) {
 		handelAction(readAction());
