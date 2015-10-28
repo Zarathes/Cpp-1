@@ -48,7 +48,7 @@ std::string RoomController::createDescription(){
 	std::vector<std::string> lightning = read.readFile("Room\lightning.txt");
 	std::vector<std::string> size = read.readFile("Room\size.txt");
 
-//	read.randomNize(size);
+	read.randomNize(size);
 
 	cout << "Input an action." << endl;
 	for (std::vector<std::string>::const_iterator i = size.begin(); i != size.end(); ++i)
