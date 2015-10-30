@@ -8,8 +8,11 @@ public:
 	void showMap();
 	void cheatMap();
 private:
-	Room rooms[1000][1000];
+	std::vector<std::string> state;
+	ReadTextFile read;
 
+	RoomController();
+	Room rooms[1000][1000];
 	std::string createDescription();
 	void connect(int level);
 };

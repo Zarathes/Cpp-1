@@ -7,7 +7,7 @@ using std::cin;
 using std::endl;
 
 std::vector<std::string> ReadTextFile::readFile(std::string source){
-	source = "../../TextFiles/Room/size.txt";
+	source = "../size.txt";
 	std::ifstream input_file{ source };
 	std::string line;
 	std::vector<std::string> strings;
@@ -22,9 +22,9 @@ std::vector<std::string> ReadTextFile::readFile(std::string source){
 	return strings;
 }
 
-std::string randomNize(std::vector<std::string> strings){
-	/*int randomIndex = rand() % strings.size();
+std::string ReadTextFile::randomNize(std::vector<std::string> strings){
+	int randomIndex = rand() % strings.size();
 	std::string result = strings[randomIndex];
-	return result;*/
-	return "heloooafodfioadfoadfa";
+	return result;
+//	return "heloooafodfioadfoadfa";
 }
