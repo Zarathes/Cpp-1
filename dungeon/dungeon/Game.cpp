@@ -58,7 +58,7 @@ void Game::start(){
 		}
 	}
 	else{
-		cout << "Enter numbers above 0 and under 1000" << endl;
+		cout << "Enter numbers above 0 and under 500" << endl;
 		start();
 	}
 }

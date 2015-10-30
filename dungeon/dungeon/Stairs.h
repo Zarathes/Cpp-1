@@ -2,8 +2,8 @@
 
 class Stairs : public Room{
 public:
-	virtual void setEntry(Room entry) = 0;
-	virtual void setOut(Room out) = 0;
+	void setEntry(Room entry);
+	void setOut(Room out);
 private:
 	Room entry;
 	Room out;

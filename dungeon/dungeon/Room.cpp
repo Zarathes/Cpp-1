@@ -13,6 +13,10 @@ void Room::setNeighbours(Exits exit, Room room){
 	neighbors[exit] = room;
 }
 
+Room Room::getExit(Exits exit){
+	return neighbors[exit];
+}
+
 void Room::addEnemy(Enemy enemy){
 	enemies.push_back(enemy);
 }

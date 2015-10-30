@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "RoomController.h"
+#include "Stairs.h"
 
 using std::cout;
 using std::cin;
@@ -72,6 +73,18 @@ int RoomController::connect(int currentLevel){
 		}
 	}
 	if (currentLevel > 1){
+		int stairsUpRandom = rand() % width;
+		int stairsDownRandom = rand() % width;
+		while (stairsDownRandom == stairsUpRandom){
+			stairsDownRandom = rand() % width;
+		}
+
+		Stairs stairsUp = Stairs();
+		Stairs stairsDown = Stairs();
+		
+
+		rooms[currentLevel][stairsUpRandom]->setNeighbours(NORTH, stairsUp);
+		rooms[currentLevel-1][stairsDownRandom]->setNeighbours(SOUTH,  stairsDown);
 		//bepaal random getal bij width
 		//zet daar trapup
 		//bepaal new randomgetal die niet hetzelfde is als strapup
@@ -89,17 +102,30 @@ int RoomController::connect(int currentLevel){
 void RoomController::showMap(){
 	for (int currentLevel = mapLevel; currentLevel > 0; currentLevel--){
 		for (int currentWidth = 1; currentWidth <= width; currentWidth++){
-			if (rooms[currentLevel][currentWidth] == startRoom){
-				Room *currentRoom = rooms[currentLevel][currentWidth];
-				//if () visited
-				printf("   s   ");
-			}else if (rooms[currentLevel][currentWidth]->visited){
-				Room *currentRoom = rooms[currentLevel][currentWidth];
-				//if () visited
+			Room *currentRoom = rooms[currentLevel][currentWidth];
+
+		/*	if (&currentRoom->getExit(WEST) != nullptr){
+				printf(" - ");
+			}
+			else{
+				printf("   ");
+			}*/
+
+
+			if (currentRoom == startRoom){				
+				printf("   s   ");				
+			}else if (currentRoom->visited){
 				printf("   r   ");
 			}else{
 				printf("   .   ");
 			}
+
+		/*	if (&currentRoom->getExit(EAST) != nullptr){
+				printf(" - ");
+			}
+			else{
+				printf("   ");
+			}*/
 		}
 		cout<< ""<< endl;
 	}

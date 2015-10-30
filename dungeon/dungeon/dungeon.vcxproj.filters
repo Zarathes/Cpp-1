@@ -108,9 +108,6 @@
     <ClInclude Include="RoomController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stairs.h">
-      <Filter>Models\Header Files\Stairs</Filter>
-    </ClInclude>
     <ClInclude Include="StairsUp.h">
       <Filter>Models\Header Files\Stairs</Filter>
     </ClInclude>
@@ -119,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="ReadTextFile.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stairs.h">
+      <Filter>Models\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
