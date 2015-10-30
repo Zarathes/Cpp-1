@@ -20,23 +20,22 @@ RoomController::RoomController() {
 	size = read.readFile("../size.txt");
 }
 
-bool RoomController::createDungeon(const int level, const int width){
-	if (level <= 1000 && width <= 1000){
+bool RoomController::createDungeon(const int newLevel, const int newWidth){
+	level = newLevel;
+	width = newWidth;
+	mapLevel = 0;
+	if (level <= 1000 && width <= 1000 && level > 0 && width > 0){
 		for (int currentLevel = 1; currentLevel <= level; currentLevel++){
+			mapLevel++;
 			for (int currentWidth = 1; currentWidth <= width; currentWidth++){
-				Room room = *new Room();
-				room.setDescription(createDescription());
-				rooms[currentLevel][currentWidth] = room;
+				Room *room = new Room();
+				room->level = level;
+				room->setDescription(createDescription());
+				rooms[mapLevel][currentWidth] = room;
 			}
-			connect(level, width);
+			mapLevel = connect(mapLevel);
 		}
-
-
-
-
-
-
-
+		showMap();
 		return true;
 	}
 	return false;
@@ -63,11 +62,45 @@ std::string RoomController::createDescription(){
 	return descr;
 }
 
-void RoomController::connect(int level, int width){
-	if (level > 1){
+int RoomController::connect(int currentLevel){
+	for (int currentWidth = 1; currentWidth <= width; currentWidth++){
+		if (currentWidth != width){
+			rooms[currentLevel][currentWidth]->setNeighbours(EAST, *rooms[currentLevel][currentWidth + 1]);
+		}
+		if (currentWidth > 1){
+			rooms[currentLevel][currentWidth]->setNeighbours(WEST, *rooms[currentLevel][currentWidth - 1]);
+		}
+	}
+	if (currentLevel > 1){
 		//bepaal random getal bij width
 		//zet daar trapup
 		//bepaal new randomgetal die niet hetzelfde is als strapup
 		//doe trapdown
+		//en doe currentlevel+1
+	}
+	else{
+		int randomIndex = rand() % width;
+		startRoom = rooms[currentLevel][randomIndex];
+	}
+
+	return currentLevel;
+}
+
+void RoomController::showMap(){
+	for (int currentLevel = mapLevel; currentLevel > 0; currentLevel--){
+		for (int currentWidth = 1; currentWidth <= width; currentWidth++){
+			if (rooms[currentLevel][currentWidth] == startRoom){
+				Room *currentRoom = rooms[currentLevel][currentWidth];
+				//if () visited
+				printf("   s   ");
+			}else if (rooms[currentLevel][currentWidth]->visited){
+				Room *currentRoom = rooms[currentLevel][currentWidth];
+				//if () visited
+				printf("   r   ");
+			}else{
+				printf("   .   ");
+			}
+		}
+		cout<< ""<< endl;
 	}
 }

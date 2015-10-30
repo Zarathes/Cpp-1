@@ -8,7 +8,7 @@
 class RoomController{
 public:
 	RoomController();
-	bool createDungeon(const int level, const int width);
+	bool createDungeon(const int newLevel, const int newWidth);
 	void showMap();
 	void cheatMap();
 private:
@@ -16,10 +16,13 @@ private:
 	std::vector<std::string> furniture;
 	std::vector<std::string> lightning;
 	std::vector<std::string> size;
+	int level;
+	int mapLevel;
+	int width;
+	Room* startRoom;
 	ReadTextFile read;
 
-
-	Room rooms[1000][1000];
+	Room *rooms[1000][1000];
 	std::string createDescription();
-	void connect(int level, int width);
+	int connect(int currentLevel);
 };

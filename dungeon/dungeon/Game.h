@@ -10,6 +10,8 @@ public:
 private:
 	bool running;
 	std::map<int, std::string> actions;
+	
+	void start();
 
 	void printActions();
 	std::string readAction();

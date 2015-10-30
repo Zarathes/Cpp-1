@@ -34,17 +34,33 @@ Game::Game() : running{ true }
 	actions.insert(pair<int, string>(7, string("Change Room")));
 	actions.insert(pair<int, string>(8, string("Stairs Up")));
 	actions.insert(pair<int, string>(9, string("Stairs Down")));
-
-	RoomController *roomController = new RoomController();
-	roomController->createDungeon(1,5);
-
-	while (running) {
-		handelAction(readAction());
-	}
+	start();
 }
 
 Game::~Game()
 {
+}
+
+void Game::start(){
+	RoomController *roomController = new RoomController();
+	cout << "How much levels should the dungeon have?" << endl;
+	string  levelString;
+	getline(cin, levelString);
+	cout << "How much rooms in a level should the dungeon have?" << endl;
+	string widthString;
+	getline(cin, widthString);
+	std::string::size_type rest;
+	int level = std::stoi(levelString, &rest);
+	int width = std::stoi(widthString, &rest);
+	if (roomController->createDungeon(level, width)){
+		while (running) {
+			handelAction(readAction());
+		}
+	}
+	else{
+		cout << "Enter numbers above 0 and under 1000" << endl;
+		start();
+	}
 }
 
 string Game::readAction()

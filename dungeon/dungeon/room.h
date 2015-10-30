@@ -17,6 +17,9 @@ public:
 	void addEnemy(Enemy enemy);
 	void deleteEnemy(Enemy enemy);
 	void addItem(Item item);
+	Room getExit(Exits exit);
+	int level;
+	bool visited = true;
 private:
 	std::string description;
 	std::map<Exits, Room> neighbors;
