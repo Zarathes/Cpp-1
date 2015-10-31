@@ -1,15 +1,17 @@
 #ifndef __unvisited_room_state__
 #define __unvisited_room_state__
 
-#include "State.h"
+#include "RoomState.h"
 
 class UnvisitedRoomState : public State{
-	public:
-		UnvisitedRoomState();
+public:
+	UnvisitedRoomState();
 
-		void goNext(Client context);
+	void goNext(Client* context);
+	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();
 
-		~UnvisitedRoomState();
+	~UnvisitedRoomState();
+
 };
 
 #endif

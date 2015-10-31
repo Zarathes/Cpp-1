@@ -7,6 +7,8 @@ class ClearedRoomState : public RoomState {
 public:
 	ClearedRoomState();
 
+	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();
+
 	~ClearedRoomState();
 };
 

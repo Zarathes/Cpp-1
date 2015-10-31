@@ -4,8 +4,8 @@
 class State;
 
 class Client{
-	private:
-		class State *current;
+	protected:
+		class State *currentState;
 	public:
 		Client();
 

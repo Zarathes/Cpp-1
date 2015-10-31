@@ -31,6 +31,9 @@
     <Filter Include="Header Files\Room">
       <UniqueIdentifier>{c6cd4121-c400-44d8-b0b9-5b5387782bae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\CommandPattern">
+      <UniqueIdentifier>{eab9df36-637a-4902-891e-89f7389beb3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -72,9 +75,6 @@
     <ClInclude Include="State.h">
       <Filter>Header Files\StatePattern</Filter>
     </ClInclude>
-    <ClInclude Include="Client.h">
-      <Filter>Header Files\StatePattern</Filter>
-    </ClInclude>
     <ClInclude Include="Room.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -89,6 +89,18 @@
     </ClInclude>
     <ClInclude Include="RoomState.h">
       <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Header Files\CommandPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Reciever.h">
+      <Filter>Header Files\CommandPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands.h">
+      <Filter>Header Files\CommandPattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Header Files\StatePattern</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="ClearedRoomState.cpp">
       <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="ConcreteCommand.h">
+      <Filter>Header Files\CommandPattern</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

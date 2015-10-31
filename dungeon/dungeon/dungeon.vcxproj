@@ -82,6 +82,8 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="ClearedRoomState.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Commands.h" />
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Equipable.h" />
@@ -90,6 +92,7 @@
     <ClInclude Include="Hero.h" />
     <ClInclude Include="InfestedRoomState.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Reciever.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomState.h" />
     <ClInclude Include="State.h" />
@@ -103,6 +106,7 @@
     <ClCompile Include="character.cpp" />
     <ClCompile Include="ClearedRoomState.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ConcreteCommand.h" />
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="dungeon.cpp" />
     <ClCompile Include="enemy.cpp" />

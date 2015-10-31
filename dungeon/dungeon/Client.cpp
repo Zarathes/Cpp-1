@@ -2,15 +2,15 @@
 #include "Client.h"
 #include "State.h"
 
-Client::Client() : current(nullptr){
+Client::Client() : currentState(nullptr){
 }
 
 void Client::goNext(){
-	current->goNext(*this);
+	currentState->goNext(this);
 }
 
 void Client::setState(State *s){
-	current = s;
+	currentState = s;
 }
 
 Client::~Client(){
