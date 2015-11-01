@@ -21,7 +21,8 @@ private:
 	int width;
 	Room* startRoom;
 	ReadTextFile read;
-
+	
+	std::vector<Room>* makeRow();
 	Room *rooms[1000][1000];
 	std::string createDescription();
 	int connect(int currentLevel);

@@ -17,14 +17,14 @@ Room Room::getExit(Exits exit){
 	return neighbors[exit];
 }
 
-void Room::addEnemy(Enemy enemy){
-	enemies.push_back(enemy);
+void Room::setEnemies(std::vector<Enemy> newEnemies){
+	enemies = newEnemies;
 }
 
 void Room::deleteEnemy(Enemy enemy){
 	//enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
 }
 
-void Room::addItem(Item item){
-	items.push_back(item);
+void Room::setItems(std::vector<Item> newItems){
+	items = newItems;
 }

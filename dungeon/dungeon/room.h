@@ -14,9 +14,9 @@ public:
 	void setDescription(std::string newDescr);
 	std::string getDescription();
 	void setNeighbours(Exits exit, Room room);
-	void addEnemy(Enemy enemy);
+	void setEnemies(std::vector<Enemy> newEnemies);
 	void deleteEnemy(Enemy enemy);
-	void addItem(Item item);
+	void setItems(std::vector<Item> newItems);
 	Room getExit(Exits exit);
 	int level;
 	bool visited = true;

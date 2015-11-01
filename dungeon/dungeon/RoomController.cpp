@@ -32,14 +32,29 @@ bool RoomController::createDungeon(const int newLevel, const int newWidth){
 				Room *room = new Room();
 				room->level = level;
 				room->setDescription(createDescription());
-				rooms[mapLevel][currentWidth] = room;
+				rooms[mapLevel][currentWidth] = makeRow();
+		
 			}
+			
 			mapLevel = connect(mapLevel);
 		}
 		showMap();
 		return true;
 	}
 	return false;
+}
+
+std::vector<Room>* RoomController::makeRow(){
+	std::vector<Room>* roomsNew = new std::vector<Room>();
+	for (int currentWidth = 1; currentWidth <= width; currentWidth++){
+		Room *room = new Room();
+		room->level = level;
+		room->setDescription(createDescription());
+		//roomsNew[currentWidth] = room;
+	}
+
+	connect(2);
+	return roomsNew;
 }
 
 std::string RoomController::createDescription(){
@@ -73,7 +88,7 @@ int RoomController::connect(int currentLevel){
 		}
 	}
 	if (currentLevel > 1){
-		int stairsUpRandom = rand() % width;
+	/*	int stairsUpRandom = rand() % width;
 		int stairsDownRandom = rand() % width;
 		while (stairsDownRandom == stairsUpRandom){
 			stairsDownRandom = rand() % width;
@@ -84,7 +99,7 @@ int RoomController::connect(int currentLevel){
 		
 
 		rooms[currentLevel][stairsUpRandom]->setNeighbours(NORTH, stairsUp);
-		rooms[currentLevel-1][stairsDownRandom]->setNeighbours(SOUTH,  stairsDown);
+		rooms[currentLevel-1][stairsDownRandom]->setNeighbours(SOUTH,  stairsDown);*/
 		//bepaal random getal bij width
 		//zet daar trapup
 		//bepaal new randomgetal die niet hetzelfde is als strapup
