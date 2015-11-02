@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,13 +19,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -85,24 +85,38 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
+    <ClInclude Include="ClearedRoomState.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="Commands.h" />
     <ClInclude Include="Consumable.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Equipable.h" />
     <ClInclude Include="Fight.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="InfestedRoomState.h" />
     <ClInclude Include="Item.h" />
+<<<<<<< HEAD:dungeon/dungeon.vcxproj
     <ClInclude Include="ReadTextFile.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomController.h" />
     <ClInclude Include="Stairs.h" />
     <ClInclude Include="StairsDown.h" />
     <ClInclude Include="StairsUp.h" />
+=======
+    <ClInclude Include="Reciever.h" />
+    <ClInclude Include="Room.h" />
+    <ClInclude Include="RoomState.h" />
+    <ClInclude Include="State.h" />
+>>>>>>> refs/remotes/origin/StatePattern:dungeon/dungeon.vcxproj
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Trap.h" />
+    <ClInclude Include="UnvisitedRoomState.h" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD:dungeon/dungeon.vcxproj
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Dungeon.cpp" />
@@ -118,10 +132,28 @@
     <ClCompile Include="Stairs.cpp" />
     <ClCompile Include="StairsDown.cpp" />
     <ClCompile Include="StairsUp.cpp" />
+=======
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="character.cpp" />
+    <ClCompile Include="ClearedRoomState.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ConcreteCommand.h" />
+    <ClCompile Include="Consumable.cpp" />
+    <ClCompile Include="dungeon.cpp" />
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="Equipable.cpp" />
+    <ClCompile Include="Exits.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="hero.cpp" />
+    <ClCompile Include="InfestedRoomState.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Room.cpp" />
+>>>>>>> refs/remotes/origin/StatePattern:dungeon/dungeon.vcxproj
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="UnvisitedRoomState.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
