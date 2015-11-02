@@ -95,10 +95,10 @@ void Room::fight(){
 	//new menu for choosing
 
 	for (int i = 0; i < enemies.size(); i++){
-		enemies[i].attack();
+		//int x = enemies[i].attack();
 	}
 
-	if (enemies.empty){
+	if (enemies.empty()){
 		currentState->goNext(this);
 	}
 }

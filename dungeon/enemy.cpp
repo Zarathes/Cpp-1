@@ -22,7 +22,7 @@ void Enemy::showStatistics(){
 }
 
 int Enemy::attack(){
-
+	return 0;
 }
 
 void Enemy::SetCommand(TYPES::ACTION_LIST command){

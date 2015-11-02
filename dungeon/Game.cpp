@@ -121,7 +121,6 @@ void Game::handelCommand()
 				ViewMapCommand(currentRoom).Execute();
 				break;
 			case TYPES::ACTION_LIST::VIEW_HERO:
-				//should be hero.statistics
 				ViewHeroCommand(hero).Execute();
 				break;
 			case TYPES::ACTION_LIST::CHANGE_ROOM:
