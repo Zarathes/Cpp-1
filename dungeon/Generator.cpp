@@ -23,6 +23,7 @@ Generator::Generator() {
 
 bool Generator::createDungeon(int newLevel, int totalRooms){
 	level = newLevel;	
+	width = totalRooms;
 
 	std::list<int> numbers;
 	numbers.push_back(2);
