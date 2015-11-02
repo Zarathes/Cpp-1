@@ -3,10 +3,14 @@
 
 using std::string;
 
-Enemy::Enemy(string name) 
-	: Character(name)
+Enemy::Enemy(string description) 
+	: Character(description)
 {
 
+}
+
+string Enemy::getName(){
+	return name;
 }
 
 string Enemy::getDescription(){

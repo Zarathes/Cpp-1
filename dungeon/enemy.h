@@ -5,6 +5,7 @@ class Enemy: public Character{
 public:
 	Enemy(std::string name);
 	std::string getDescription();
+	std::string getName();
 	void showStatistics();
 
 

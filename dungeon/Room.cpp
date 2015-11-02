@@ -25,14 +25,19 @@ void Room::enteringRoom(){
 
 	if (enemies.empty()){
 		currentState = new ClearedRoomState();
-		cout << "In this room are enemies:" << endl;
-		for (Enemy *enemy : enemies){
-			cout << enemy->getDescription() << endl;
+		cout << "This room has a exit to:" << endl;
+		std::map<Exits, Room>::iterator temp;
+		for (temp = neighbors.begin; temp != neighbors.end; temp++){
+			//cout << temp.first << endl;
 		}
 	}
 	else{
 		currentState = new InfestedRoomState();
-	}	
+		cout << "In this room are enemies:" << endl;
+		for (int i = 0; i < enemies.size(); i++){
+			cout << enemies[i]->getName() << endl;
+		}
+	}
 }
 
 void Room::setNeighbours(Exits exit, Room room) {
