@@ -6,7 +6,9 @@ using std::endl;
 #include <iostream>
 #include <string>
 
+Hero::Hero() : Character("Hero"){
 
+}
 
 Room Hero::getCurrentRoom(){
 	return Hero::currentRoom;

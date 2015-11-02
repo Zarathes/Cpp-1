@@ -11,6 +11,8 @@
 
 class Hero: public Character{
 public:
+	Hero();
+
 	Room getCurrentRoom();
 	void showStatistics();
 	void showBag();
