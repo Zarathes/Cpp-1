@@ -21,6 +21,7 @@ public:
 
 	void setDescription(std::string newDescr);
 	void printDescription();
+	void enteringRoom();
 	void setNeighbours(Exits exit, Room room);
 	void setEnemies(std::vector<Enemy*> newEnemies);
 	void deleteEnemy(Enemy enemy);

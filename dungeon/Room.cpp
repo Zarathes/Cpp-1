@@ -3,6 +3,8 @@
 
 #include "State.h"
 #include "UnvisitedRoomState.h"
+#include "InfestedRoomState.h"
+#include "ClearedRoomState.h"
 
 using namespace std;
 
@@ -16,6 +18,21 @@ void Room::setDescription(std::string newDescr) {
 
 void Room::printDescription(){
 	cout << description << endl;
+}
+
+void Room::enteringRoom(){
+	printDescription();
+
+	if (enemies.empty()){
+		currentState = new ClearedRoomState();
+		cout << "In this room are enemies:" << endl;
+		for (Enemy *enemy : enemies){
+			cout << enemy->getDescription() << endl;
+		}
+	}
+	else{
+		currentState = new InfestedRoomState();
+	}	
 }
 
 void Room::setNeighbours(Exits exit, Room room) {

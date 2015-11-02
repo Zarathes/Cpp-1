@@ -69,8 +69,7 @@ bool Game::generateDungeon() {
 
 void Game::start(){
 	while (running) {
-		currentRoom->printDescription();
-		currentRoom->isVisited();
+		currentRoom->enteringRoom();
 		commands = currentRoom->getCommands();
 		handelCommand();
 	}
