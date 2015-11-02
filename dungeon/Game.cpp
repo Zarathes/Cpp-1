@@ -24,6 +24,7 @@ using std::out_of_range;
 
 Game::Game() : running{ true }
 {	
+	hero = new Hero();
 	if (generateDungeon()) {
 		start();
 	}
@@ -61,15 +62,15 @@ bool Game::generateDungeon() {
 
 	if (dungenGenerator->createDungeon(levels, totalRooms)) {
 		currentRoom = dungenGenerator->getStartRoom();
-
 		return true;
 	}
-
 	return false;
 }
 
 void Game::start(){
 	while (running) {
+		currentRoom->printDescription();
+		currentRoom->isVisited();
 		commands = currentRoom->getCommands();
 		handelCommand();
 	}
@@ -110,16 +111,18 @@ void Game::handelCommand()
 				RunCommand(currentRoom).Execute();
 				break;
 			case TYPES::ACTION_LIST::SEE_BAG:
-				SeeBagCommand(currentRoom).Execute();
+				SeeBagCommand(hero).Execute();
 				break;
 			case TYPES::ACTION_LIST::REST:
 				RestCommand(currentRoom).Execute();
 				break;
 			case TYPES::ACTION_LIST::VIEW_MAP:
+				//should be roomcontroller.showmap
 				ViewMapCommand(currentRoom).Execute();
 				break;
 			case TYPES::ACTION_LIST::VIEW_HERO:
-				ViewHeroCommand(currentRoom).Execute();
+				//should be hero.statistics
+				ViewHeroCommand(hero).Execute();
 				break;
 			case TYPES::ACTION_LIST::CHANGE_ROOM:
 				ChangeRoomCommand(currentRoom).Execute();

@@ -16,7 +16,11 @@ public:
 	std::list<Item> getInventory();
 	std::list<Equipable> getEquipment();
 	Room getCurrentRoom();
+	void showStatistics();
+	void showBag();
 
+	void SetCommand(TYPES::ACTION_LIST command);
+	void Execute();
 private:
 	int experiancePoints;
 	int perceptionPoints;
