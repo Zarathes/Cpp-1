@@ -43,6 +43,7 @@ bool Generator::createDungeon(int depth, int width, int height){
 			for (auto &c : b) {
 				Room *temp = (Room*)c;
 				temp->setDescription(createDescription());
+				temp->setEnemies(createEnemies());
 			}
 		}
 	}
@@ -60,7 +61,6 @@ bool Generator::createDungeon(int depth, int width, int height){
 			for (size_t x = 0; x < dungeon[z][y].size(); x++)
 			{
 				Room *temp = dungeon[z][y][x];
-				createEnemies();
 
 			}
 		}

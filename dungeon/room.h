@@ -22,7 +22,7 @@ public:
 	void setDescription(std::string newDescr);
 	void printDescription();
 	void setNeighbours(Exits exit, Room room);
-	void setEnemies(std::vector<Enemy> newEnemies);
+	void setEnemies(std::vector<Enemy*> newEnemies);
 	void deleteEnemy(Enemy enemy);
 	void setItems(std::vector<Item> newItems);
 	Room getExit(Exits exit);
@@ -42,7 +42,7 @@ private:
 
 	std::string description;
 	std::map<Exits, Room> neighbors;
-	std::vector<Enemy> enemies;
+	std::vector<Enemy*> enemies;
 	std::vector<Item> items;
 	Trap trap;
 

@@ -22,7 +22,7 @@ void Room::setNeighbours(Exits exit, Room room) {
 	neighbors[exit] = room;
 }
 
-void Room::setEnemies(std::vector<Enemy> newEnemies) {
+void Room::setEnemies(std::vector<Enemy*> newEnemies) {
 	enemies = newEnemies;
 }
 
