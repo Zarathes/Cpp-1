@@ -7,7 +7,7 @@ using std::endl;
 #include <string>
 
 Hero::Hero() : Character("Hero"){
-
+	rooms = std::stack<Room>();
 }
 
 void Hero::insertCurrentRoom(Room room){
@@ -61,8 +61,13 @@ void Hero::underAttack(int points){
 }
 
 void Hero::run(){
-	rooms.pop();
-	currentRoom = rooms.top();
+	if (rooms.empty()){
+		cout << "No room to run in" << endl;
+	}
+	else{
+		rooms.pop();
+		currentRoom = rooms.top();
+	}
 }
 
 void Hero::Execute(){

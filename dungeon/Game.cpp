@@ -62,6 +62,7 @@ bool Game::generateDungeon() {
 
 	if (dungenGenerator->createDungeon(levels, width, height)) {
 		currentRoom = dungenGenerator->getStartRoom();
+		hero->insertCurrentRoom(*currentRoom);
 		return true;
 	}
 	return false;
@@ -108,7 +109,7 @@ void Game::handelCommand()
 				break;
 			case TYPES::ACTION_LIST::RUN:
 				RunCommand(hero).Execute();
-				currentRoom = &hero->getCurrentRoom();
+				//*currentRoom = hero->getCurrentRoom();
 				break;
 			case TYPES::ACTION_LIST::SEE_BAG:
 				SeeBagCommand(hero).Execute();

@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "Enemy.h"
+using std::cout;
+using std::cin;
+using std::endl;
 
 using std::string;
 
@@ -18,7 +21,9 @@ string Enemy::getDescription(){
 }
 
 void Enemy::showStatistics(){
-
+	cout << name << " statistics " << endl;
+	cout << "Life points: " << lifePoints << endl;
+	cout << "" << endl;
 }
 
 int Enemy::attack(){
