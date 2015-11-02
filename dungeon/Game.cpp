@@ -9,7 +9,6 @@ using std::string;
 
 using std::getline;
 
-#include <iostream>
 using std::cout;
 using std::cin;
 using std::endl;
@@ -22,7 +21,7 @@ using std::invalid_argument;
 using std::out_of_range;
 
 
-Game::Game() : running{ true }
+Game::Game() : currentRoom(nullptr), running{ true }
 {	
 	if (generateDungeon()) {
 		start();
@@ -57,9 +56,10 @@ bool Game::generateDungeon() {
 	Generator *dungenGenerator = new Generator();
 
 	int levels = inputNumber("How many levels should the dungeon have?");
-	int totalRooms = inputNumber("How many rooms should each layer have?");
+	int width = inputNumber("What should the dungeon width be?");
+	int height = inputNumber("What should the dungeon height be?");
 
-	if (dungenGenerator->createDungeon(levels, totalRooms)) {
+	if (dungenGenerator->createDungeon(levels, width, height)) {
 		currentRoom = dungenGenerator->getStartRoom();
 
 		return true;

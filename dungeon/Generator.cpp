@@ -5,6 +5,9 @@
 using std::cout;
 using std::cin;
 using std::endl;
+using std::vector;
+using std::string;
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -12,86 +15,89 @@ using std::endl;
 #include <sstream>
 #include <cstdio>
 
+#include "Exits.h"
+
 
 Generator::Generator() {
 	read = *new ReadTextFile();
+	size = read.readFile("config/size.txt");
+	roomType = read.readFile("config/roomType.txt");
 	state = read.readFile("config/state.txt");
 	furniture = read.readFile("config/furniture.txt");
 	lightning = read.readFile("config/lightning.txt");
-	size = read.readFile("config/size.txt");
+	enemies = read.readFile("config/enemies.txt");
 }
 
-bool Generator::createDungeon(int newLevel, int totalRooms){
-	level = newLevel;	
-	width = totalRooms;
+bool Generator::createDungeon(int depth, int width, int height){
+	level = depth;	
+	width = width;
+	height = height;	
 
-	std::list<int> numbers;
-	numbers.push_back(2);
-	numbers.push_back(3);
-	numbers.push_back(4);
-	numbers.push_back(5);
-	numbers.push_back(6);
-	numbers.push_back(7);
-	numbers.push_back(8);
-	numbers.push_back(9);
-	numbers.push_back(10);
+	vector< vector< vector<Room*> > > dungeon(depth, vector<vector<Room*>>(width, vector<Room*>(height, new Room())));
 
-	subset_sum(numbers, totalRooms);
-
-	getchar();
-
-	mapLevel = 0;
-	if (level <= 1000 && width <= 1000 && level > 0 && width > 0){
-		for (int currentLevel = 1; currentLevel <= level; currentLevel++){
-			mapLevel++;
-			for (int currentWidth = 1; currentWidth <= width; currentWidth++){
-				Room *room = new Room();
-				room->setLevel(level);
-				room->setDescription(createDescription());
-				rooms[mapLevel][currentWidth] = room;
-		
+	//depth
+	for (auto &a : dungeon) {
+		// width
+		for (auto &b : a) {
+			// height
+			for (auto &c : b) {
+				Room *temp = (Room*)c;
+				temp->setDescription(createDescription());
 			}
-			
-			mapLevel = connect(mapLevel);
 		}
-		//showMap();
-		return true;
-	}
-	return false;
-}
-
-std::vector<Room>* Generator::makeRow(){
-	std::vector<Room>* roomsNew = new std::vector<Room>();
-	for (int currentWidth = 1; currentWidth <= width; currentWidth++){
-		Room *room = new Room();
-		room->setLevel(level);
-		room->setDescription(createDescription());
-		//roomsNew[currentWidth] = room;
 	}
 
-	connect(2);
-	return roomsNew;
+	startRoom = dungeon[0][0][0];
+
+	//Corridors
+	//depth
+	for (size_t z = 0; z < dungeon.size(); z++)
+	{
+		//width
+		for (size_t y = 0; y < dungeon[z].size(); y++)
+		{
+			//height
+			for (size_t x = 0; x < dungeon[z][y].size(); x++)
+			{
+				Room *temp = dungeon[z][y][x];
+				createEnemies();
+
+			}
+		}
+	}
+
+	return true;
 }
 
-std::string Generator::createDescription(){
-	std::string sizeInput = read.randomNize(size);
-	std::string furnitureInput = read.randomNize(furniture);
-	std::string lightningInput = read.randomNize(lightning);
-	std::string stateInput = read.randomNize(state);
+string Generator::createDescription(){
+	string sizeInput = read.randomNize(size);
+	string roomInput = read.randomNize(roomType);
+	string furnitureInput = read.randomNize(furniture);
+	string lightningInput = read.randomNize(lightning);
+	string stateInput = read.randomNize(state);
 
 //	cout << "Make description" << endl;
-	std::string descr = "Welcome you are in a ";
-	descr += sizeInput;
-	descr += " size room. The room has ";
-	descr += furnitureInput;
-	descr += " The room is ";
-	descr += stateInput;
-	descr += " and ";
-	descr += lightningInput;
+	string descr = "Description: ";
+	descr += "You Are in a " + sizeInput + " " + roomInput + ". ";
+	descr += "The "+ roomInput +" has " + furnitureInput +". ";
+	descr += "The room is " + stateInput +" and " + lightningInput + ".";
 	
 //	cout << descr << endl;
 
 	return descr;
+}
+
+vector<Enemy*> Generator::createEnemies() {
+	vector<Enemy*> infestation;
+
+	int randNum = rand() % (4 - -1 + 1) + -1;
+
+	for (int i = 0; i < randNum; i++) {
+		string enemiesInput = read.randomNize(enemies);
+		infestation.push_back(new Enemy(enemiesInput));
+	}
+
+	return infestation;
 }
 
 int Generator::connect(int currentLevel){
@@ -164,45 +170,4 @@ void Generator::showMap(){
 
 Room* Generator::getStartRoom() {
 	return startRoom;
-}
-
-void Generator::subset_sum_recursive(std::list<int> numbers, int target, std::list<int> partial)
-{
-	int s = 0;
-	for (std::list<int>::const_iterator cit = partial.begin(); cit != partial.end(); cit++)
-	{
-		s += *cit;
-	}
-	if (s == target)
-	{
-		std::cout << "sum([";
-
-		for (std::list<int>::const_iterator cit = partial.begin(); cit != partial.end(); cit++)
-		{
-			std::cout << *cit << ",";
-		}
-		std::cout << "])=" << target << std::endl;
-	}
-	if (s >= target)
-		return;
-	int n;
-	for (std::list<int>::const_iterator ai = numbers.begin(); ai != numbers.end(); ai++)
-	{
-		n = *ai;
-		std::list<int> remaining;
-		for (std::list<int>::const_iterator aj = ai; aj != numbers.end(); aj++)
-		{
-			if (aj == ai)continue;
-			remaining.push_back(*aj);
-		}
-		std::list<int> partial_rec = partial;
-		partial_rec.push_back(n);
-		subset_sum_recursive(remaining, target, partial_rec);
-
-	}
-}
-
-void Generator::subset_sum(std::list<int> numbers, int target)
-{
-	subset_sum_recursive(numbers, target, std::list<int>());
 }

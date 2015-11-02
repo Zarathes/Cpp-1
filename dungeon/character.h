@@ -2,10 +2,12 @@
 #define __character__
 
 #include <iostream>
+#include <string>
 
 class Character{
 
 public:
+	Character(std::string name);
 	int getLifePoints();
 	
 protected:

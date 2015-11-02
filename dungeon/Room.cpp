@@ -10,10 +10,6 @@ Room::Room() {
 	currentState = new UnvisitedRoomState();
 }
 
-std::string Room::getDescription() {
-	return description;
-}
-
 void Room::setDescription(std::string newDescr) {
 	description = newDescr;
 }
@@ -36,10 +32,6 @@ void Room::setItems(std::vector<Item> newItems) {
 
 Room Room::getExit(Exits exit) {
 	return neighbors[exit];
-}
-
-void Room::setLevel(int l) {
-	level = l;
 }
 
 bool Room::isVisited() {

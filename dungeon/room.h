@@ -19,7 +19,6 @@ class Room : public Client, public Reciever {
 public:	
 	Room();
 
-	std::string getDescription();
 	void setDescription(std::string newDescr);
 
 	void setNeighbours(Exits exit, Room room);
@@ -27,8 +26,6 @@ public:
 	void deleteEnemy(Enemy enemy);
 	void setItems(std::vector<Item> newItems);
 	Room getExit(Exits exit);
-
-	void setLevel(int l);
 
 	bool isVisited();
 

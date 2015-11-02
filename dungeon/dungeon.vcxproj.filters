@@ -105,6 +105,9 @@
     <ClInclude Include="Generator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Exits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -170,5 +173,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="config\attacks.txt" />
+    <Text Include="config\furniture.txt" />
+    <Text Include="config\lightning.txt" />
+    <Text Include="config\size.txt" />
+    <Text Include="config\state.txt" />
+    <Text Include="config\roomType.txt" />
+    <Text Include="config\enemies.txt" />
   </ItemGroup>
 </Project>

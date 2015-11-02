@@ -1,6 +1,14 @@
 #include "stdafx.h"
 #include "Enemy.h"
 
-std::string Enemy::getDescription(){
+using std::string;
+
+Enemy::Enemy(string name) 
+	: Character(name)
+{
+
+}
+
+string Enemy::getDescription(){
 	return Enemy::description;
 }

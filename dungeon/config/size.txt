@@ -1,1 +1,1 @@
-big;small;average;
+tiny;small;medium;big;huge;
