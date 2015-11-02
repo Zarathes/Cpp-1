@@ -21,7 +21,7 @@ public:
 
 	std::string getDescription();
 	void setDescription(std::string newDescr);
-
+	void printDescription();
 	void setNeighbours(Exits exit, Room room);
 	void setEnemies(std::vector<Enemy> newEnemies);
 	void deleteEnemy(Enemy enemy);
