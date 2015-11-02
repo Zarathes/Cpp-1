@@ -32,7 +32,7 @@ bool RoomController::createDungeon(const int newLevel, const int newWidth){
 				Room *room = new Room();
 				room->level = level;
 				room->setDescription(createDescription());
-				rooms[mapLevel][currentWidth] = makeRow();
+				rooms[mapLevel][currentWidth] = room;
 		
 			}
 			
