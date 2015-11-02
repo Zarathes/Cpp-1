@@ -107,7 +107,8 @@ void Game::handelCommand()
 				FightCommand(currentRoom).Execute();
 				break;
 			case TYPES::ACTION_LIST::RUN:
-				RunCommand(currentRoom).Execute();
+				RunCommand(hero).Execute();
+				currentRoom = &hero->getCurrentRoom();
 				break;
 			case TYPES::ACTION_LIST::SEE_BAG:
 				SeeBagCommand(hero).Execute();
@@ -125,8 +126,9 @@ void Game::handelCommand()
 				break;
 			case TYPES::ACTION_LIST::CHANGE_ROOM:
 				ChangeRoomCommand(currentRoom).Execute();
+				currentRoom = &hero->getCurrentRoom();
 				break;
-			}
+			}			
 		}
 		else {
 			throw invalid_argument("No valid Action");

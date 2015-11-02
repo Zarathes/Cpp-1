@@ -6,7 +6,7 @@
 class InfestedRoomState : public State {
 public:
 	InfestedRoomState();
-
+	
 	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();
 
 	void goNext(Client* context);

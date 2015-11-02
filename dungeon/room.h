@@ -28,6 +28,8 @@ public:
 	void setItems(std::vector<Item> newItems);
 	Room getExit(Exits exit);
 
+	void fight();
+
 	bool isVisited();
 
 	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();

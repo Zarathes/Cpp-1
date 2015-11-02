@@ -9,6 +9,7 @@ InfestedRoomState::InfestedRoomState() {
 }
 
 void InfestedRoomState::goNext(Client* context) {
+	fight();
 	context->setState(new ClearedRoomState());
 	delete this;
 }

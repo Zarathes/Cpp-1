@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <stack>
 #include "Character.h"
 #include "Room.h"
 #include "Equipable.h"
@@ -13,9 +14,12 @@ class Hero: public Character{
 public:
 	Hero();
 
+	void insertCurrentRoom(Room room);
 	Room getCurrentRoom();
 	void showStatistics();
 	void showBag();
+	void underAttack(int points);
+	void run();
 
 	void SetCommand(TYPES::ACTION_LIST command);
 	void Execute();
@@ -24,6 +28,7 @@ private:
 	int perceptionPoints;
 	std::vector<Consumable> consumable;
 	std::vector<Equipable> equipment;
+	std::stack<Room> rooms;
 	Room currentRoom;
 };
 

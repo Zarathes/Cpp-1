@@ -10,6 +10,11 @@ Hero::Hero() : Character("Hero"){
 
 }
 
+void Hero::insertCurrentRoom(Room room){
+	rooms.push(room);
+	currentRoom = room;
+}
+
 Room Hero::getCurrentRoom(){
 	return Hero::currentRoom;
 }
@@ -50,6 +55,16 @@ void Hero::SetCommand(TYPES::ACTION_LIST command){
 	currentCommand = command;
 }
 
+void Hero::underAttack(int points){
+	lifePoints -= points;
+	//check alive
+}
+
+void Hero::run(){
+	rooms.pop();
+	currentRoom = rooms.top();
+}
+
 void Hero::Execute(){
 	switch (currentCommand) {
 	case TYPES::ACTION_LIST::VIEW_HERO:
@@ -57,6 +72,9 @@ void Hero::Execute(){
 		break;
 	case TYPES::ACTION_LIST::SEE_BAG:
 		showBag();
+		break;
+	case TYPES::ACTION_LIST::RUN:
+		run();
 		break;
 	}
 }

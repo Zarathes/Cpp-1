@@ -21,7 +21,9 @@ void Enemy::showStatistics(){
 
 }
 
+int Enemy::attack(){
 
+}
 
 void Enemy::SetCommand(TYPES::ACTION_LIST command){
 	currentCommand = command;

@@ -89,6 +89,20 @@ bool Room::isVisited() {
 	return true;
 }
 
+void Room::fight(){
+	//hero attack
+	//enemy attacks
+	//new menu for choosing
+
+	for (int i = 0; i < enemies.size(); i++){
+		enemies[i].attack();
+	}
+
+	if (enemies.empty){
+		currentState->goNext(this);
+	}
+}
+
 std::map<int, pair<TYPES::ACTION_LIST, string>> Room::getCommands()
 {
 	return currentState->getCommands();
