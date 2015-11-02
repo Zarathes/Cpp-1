@@ -21,21 +21,43 @@ void Room::printDescription(){
 }
 
 void Room::enteringRoom(){
-	printDescription();
-
+	
 	if (enemies.empty()){
 		currentState = new ClearedRoomState();
-		cout << "This room has a exit to:" << endl;
+		printDescription();
+		cout << "This room has an exit to:" << endl;
 		std::map<Exits, Room>::iterator temp;
-		for (temp = neighbors.begin; temp != neighbors.end; temp++){
-			//cout << temp.first << endl;
+
+		neighbors[NORTH] = Room();
+		neighbors[EAST] = Room();
+
+		std::map<Exits, Room>::iterator test = neighbors.begin();
+
+		while (test != neighbors.end()){
+			switch (test->first) {
+			case 0:
+				cout << "North" << endl;
+				break;
+			case 1:
+				cout << "East" << endl;
+				break;
+			case 2:
+				cout << "South" << endl;
+				break;
+			case 3:
+				cout << "West" << endl;
+				break;
+			}
+			++test;
 		}
+
+
 	}
 	else{
 		currentState = new InfestedRoomState();
 		cout << "In this room are enemies:" << endl;
 		for (int i = 0; i < enemies.size(); i++){
-			cout << enemies[i]->getName() << endl;
+			cout << enemies[i]->getName() << "  " << enemies[i]->getLifePoints() << endl;
 		}
 	}
 }
