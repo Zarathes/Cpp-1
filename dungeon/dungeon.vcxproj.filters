@@ -13,113 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-<<<<<<< HEAD
-    <Filter Include="Models">
-      <UniqueIdentifier>{0b73abdc-ced5-499a-9bb0-d472cc29b631}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Header Files">
-      <UniqueIdentifier>{5b154db5-655b-4820-a576-6cccb70a7fad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Header Files\Character">
-      <UniqueIdentifier>{8c7ea334-6e97-41d8-83c7-46dbd55d96f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Header Files\Item">
-      <UniqueIdentifier>{1605a5b1-ac8f-4968-995f-411be64e3e73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Source Files">
-      <UniqueIdentifier>{bef25858-d579-4cb8-a438-de74c9779293}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Source Files\Character">
-      <UniqueIdentifier>{0a54398c-cb8e-4871-a7e5-08470d90c5b9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Source Files\Item">
-      <UniqueIdentifier>{ac1f1e6d-9faa-4d22-a01a-03d471c08b32}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Header Files\Stairs">
-      <UniqueIdentifier>{1a349787-ad81-4254-a861-05d3a8e61d6f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Models\Source Files\Stairs">
-      <UniqueIdentifier>{ce260be5-60fb-4dbd-ac2a-4fc6d50e1ceb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TextFiles">
-      <UniqueIdentifier>{cc92b970-182a-4128-9166-e6177fdd7f57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TextFiles\Room">
-      <UniqueIdentifier>{5ad8752e-edd6-4171-8cb6-1d43d5640bd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TextFiles\Item">
-      <UniqueIdentifier>{70b46982-7833-4535-843b-65e4b156ba42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TextFiles\Enemy">
-      <UniqueIdentifier>{9979351d-1537-463f-996d-a4a5e185bc8f}</UniqueIdentifier>
-=======
-    <Filter Include="Header Files\Item">
-      <UniqueIdentifier>{1605a5b1-ac8f-4968-995f-411be64e3e73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Character">
-      <UniqueIdentifier>{8c7ea334-6e97-41d8-83c7-46dbd55d96f5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\StatePattern">
-      <UniqueIdentifier>{6504bb6a-9f80-4081-a6b4-5059e6413175}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\StatePattern">
-      <UniqueIdentifier>{a4d90961-2745-4290-adfd-bd8960ab571f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Room">
-      <UniqueIdentifier>{56f1780e-b88e-4309-b920-1fed5d9731d9}</UniqueIdentifier>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{40850460-265f-4ba5-a2cf-70906a66efbc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Room">
-      <UniqueIdentifier>{c6cd4121-c400-44d8-b0b9-5b5387782bae}</UniqueIdentifier>
+      <UniqueIdentifier>{c7496414-2c2e-4fa6-874a-ed4a8209338d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\CommandPattern">
-      <UniqueIdentifier>{eab9df36-637a-4902-891e-89f7389beb3d}</UniqueIdentifier>
->>>>>>> refs/remotes/origin/StatePattern
+    <Filter Include="Source Files\Room">
+      <UniqueIdentifier>{c984a99f-e76c-4a97-97b5-77cb8e0db58d}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.txt" />
-<<<<<<< HEAD
-    <Text Include="..\size.txt">
-      <Filter>TextFiles\Room</Filter>
-    </Text>
-    <Text Include="..\lightning.txt">
-      <Filter>TextFiles\Room</Filter>
-    </Text>
-    <Text Include="..\state.txt">
-      <Filter>TextFiles\Room</Filter>
-    </Text>
-    <Text Include="..\furniture.txt">
-      <Filter>TextFiles\Room</Filter>
-    </Text>
-    <Text Include="..\attacks.txt">
-      <Filter>TextFiles\Enemy</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Room.h">
-      <Filter>Models\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Models\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Models\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Trap.h">
-      <Filter>Models\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Models\Header Files\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Consumable.h">
-      <Filter>Models\Header Files\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Models\Header Files\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipable.h">
-      <Filter>Models\Header Files\Item</Filter>
-=======
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -128,189 +30,145 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Trap.h">
+    <ClInclude Include="Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipable.h">
-      <Filter>Header Files\Item</Filter>
-    </ClInclude>
     <ClInclude Include="Consumable.h">
-      <Filter>Header Files\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files\Character</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Character</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Hero.h">
-      <Filter>Header Files\Character</Filter>
->>>>>>> refs/remotes/origin/StatePattern
+    <ClInclude Include="Equipable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fight.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Hero.h">
-      <Filter>Models\Header Files\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Models\Header Files\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomController.h">
+    <ClInclude Include="hero.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StairsUp.h">
-      <Filter>Models\Header Files\Stairs</Filter>
-    </ClInclude>
-    <ClInclude Include="StairsDown.h">
-      <Filter>Models\Header Files\Stairs</Filter>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ReadTextFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stairs.h">
-      <Filter>Models\Header Files</Filter>
+    <ClInclude Include="Reciever.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Fight.h">
+    <ClInclude Include="Stairs.h">
       <Filter>Header Files</Filter>
-=======
-    <ClInclude Include="Fight.h">
+    </ClInclude>
+    <ClInclude Include="StairsDown.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StairsUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Header Files\Interface</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Header Files\StatePattern</Filter>
+      <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="Room.h">
+    <ClInclude Include="ClearedRoomState.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="UnvisitedRoomState.h">
+    <ClInclude Include="Commands.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="ConcreteCommand.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
     <ClInclude Include="InfestedRoomState.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="ClearedRoomState.h">
+    <ClInclude Include="RoomController.h">
+      <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
     <ClInclude Include="RoomState.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="Command.h">
-      <Filter>Header Files\CommandPattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Reciever.h">
-      <Filter>Header Files\CommandPattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Commands.h">
-      <Filter>Header Files\CommandPattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Client.h">
-      <Filter>Header Files\StatePattern</Filter>
->>>>>>> refs/remotes/origin/StatePattern
+    <ClInclude Include="UnvisitedRoomState.h">
+      <Filter>Header Files\Room</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Dungeon.cpp">
-      <Filter>Models\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Models\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Models\Source Files\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Models\Source Files\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Hero.cpp">
-      <Filter>Models\Source Files\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipable.cpp">
-      <Filter>Models\Source Files\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Models\Source Files\Item</Filter>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Consumable.cpp">
-      <Filter>Models\Source Files\Item</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Dungeon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Equipable.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Exits.cpp">
-      <Filter>Models\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Stairs.cpp">
-      <Filter>Models\Source Files\Stairs</Filter>
-    </ClCompile>
-    <ClCompile Include="StairsUp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StairsDown.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ReadTextFile.cpp">
-      <Filter>Source Files</Filter>
-=======
-    <ClCompile Include="dungeon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="enemy.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="hero.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Action.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Exits.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Consumable.cpp">
+    <ClCompile Include="ReadTextFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Client.cpp">
-      <Filter>Source Files\StatePattern</Filter>
+    <ClCompile Include="Stairs.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Source Files\Room</Filter>
+    <ClCompile Include="StairsDown.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnvisitedRoomState.cpp">
+    <ClCompile Include="StairsUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearedRoomState.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>
     <ClCompile Include="InfestedRoomState.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>
-    <ClCompile Include="ClearedRoomState.cpp">
+    <ClCompile Include="Room.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>
-    <ClCompile Include="ConcreteCommand.h">
-      <Filter>Header Files\CommandPattern</Filter>
->>>>>>> refs/remotes/origin/StatePattern
+    <ClCompile Include="RoomController.cpp">
+      <Filter>Source Files\Room</Filter>
     </ClCompile>
+    <ClCompile Include="UnvisitedRoomState.cpp">
+      <Filter>Source Files\Room</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

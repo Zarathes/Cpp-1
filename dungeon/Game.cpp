@@ -15,6 +15,7 @@ using std::cin;
 using std::endl;
 
 #include "RoomController.h"
+#include "ConcreteCommand.h"
 
 //exceptions
 using std::invalid_argument;
@@ -52,8 +53,11 @@ void Game::start(){
 	std::string::size_type rest;
 	int level = std::stoi(levelString, &rest);
 	int width = std::stoi(widthString, &rest);
+	
+	currentRoom = new Room();
 	if (roomController->createDungeon(level, width)){
 		while (running) {
+			commands = currentRoom->getCommands();
 			handelAction(readAction());
 		}
 	}
@@ -77,14 +81,15 @@ string Game::readAction()
 void Game::printActions()
 {
 	int current = 1;
-	int actionCount = actions.size();
-	for (auto const& a : actions)
+
+	int index = commands.size();
+	for (auto const& a : commands)
 	{
-		if (current == actionCount) {
-			cout << a.first << ": " << a.second << endl;
+		if (current == index) {
+			cout << a.first << ": " << a.second.second << endl;
 		}
 		else {
-			cout << a.first << ": " << a.second << " | ";
+			cout << a.first << ": " << a.second.second << " | ";
 		}
 
 		current++;
@@ -96,9 +101,34 @@ void Game::handelAction(string input)
 	std::string::size_type rest;
 
 	try {
-		int action = std::stoi(input, &rest);
-		if (actions.find(action) != actions.end()) {
-			cout << "Your action is: " << action << ": " << actions[action] << "." << endl;
+		int command = std::stoi(input, &rest);
+		if (commands.find(command) != commands.end()) {
+			cout << "Your action is: " << command << ": " << commands[command].second << "." << endl;
+
+			switch (commands[command].first) {
+			case TYPES::ACTION_LIST::FIGHT:
+				FightCommand(currentRoom).Execute();
+				break;
+			case TYPES::ACTION_LIST::RUN:
+				RunCommand(currentRoom).Execute();
+				break;
+			case TYPES::ACTION_LIST::SEE_BAG:
+				SeeBagCommand(currentRoom).Execute();
+				break;
+			case TYPES::ACTION_LIST::REST:
+				RestCommand(currentRoom).Execute();
+				break;
+			case TYPES::ACTION_LIST::VIEW_MAP:
+				ViewMapCommand(currentRoom).Execute();
+				break;
+			case TYPES::ACTION_LIST::VIEW_HERO:
+				ViewHeroCommand(currentRoom).Execute();
+				break;
+			case TYPES::ACTION_LIST::CHANGE_ROOM:
+				ChangeRoomCommand(currentRoom).Execute();
+				break;
+			}
+
 			//cout << "Remaining characters: " << input.substr(rest) << "." << endl;
 		}
 		else {

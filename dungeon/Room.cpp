@@ -1,34 +1,6 @@
 #include "stdafx.h"
 #include "Room.h"
 
-<<<<<<< HEAD
-void Room::setDescription(std::string newDescr){
-	description = newDescr;
-}
-
-std::string Room::getDescription(){
-	return description;
-}
-
-void Room::setNeighbours(Exits exit, Room room){
-	neighbors[exit] = room;
-}
-
-Room Room::getExit(Exits exit){
-	return neighbors[exit];
-}
-
-void Room::setEnemies(std::vector<Enemy> newEnemies){
-	enemies = newEnemies;
-}
-
-void Room::deleteEnemy(Enemy enemy){
-	//enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
-}
-
-void Room::setItems(std::vector<Item> newItems){
-	items = newItems;
-=======
 #include "State.h"
 #include "UnvisitedRoomState.h"
 
@@ -38,12 +10,40 @@ Room::Room() {
 	currentState = new UnvisitedRoomState();
 }
 
-std::string Room::getDescription(){
-	return Room::description;
+std::string Room::getDescription() {
+	return description;
 }
 
-void Room::setNeighbours(Exits exit, Room room){
-	//neighbors.insert(exit, room);
+void Room::setDescription(std::string newDescr) {
+	description = newDescr;
+}
+
+void Room::setNeighbours(Exits exit, Room room) {
+	neighbors[exit] = room;
+}
+
+void Room::setEnemies(std::vector<Enemy> newEnemies) {
+	enemies = newEnemies;
+}
+
+void Room::deleteEnemy(Enemy enemy) {
+	//enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
+}
+
+void Room::setItems(std::vector<Item> newItems) {
+	items = newItems;
+}
+
+Room Room::getExit(Exits exit) {
+	return neighbors[exit];
+}
+
+void Room::setLevel(int l) {
+	level = l;
+}
+
+bool Room::isVisited() {
+	return visited;
 }
 
 std::map<int, pair<TYPES::ACTION_LIST, string>> Room::getCommands()
@@ -85,6 +85,5 @@ void Room::Execute()
 }
 
 Room::~Room() {
-	delete currentState;
->>>>>>> refs/remotes/origin/StatePattern
+//	delete currentState;
 }

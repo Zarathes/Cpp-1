@@ -15,10 +15,10 @@ using std::endl;
 
 RoomController::RoomController() {
 	read = *new ReadTextFile();
-	state = read.readFile("../state.txt");
-	furniture = read.readFile("../furniture.txt");
-	lightning = read.readFile("../lightning.txt");
-	size = read.readFile("../size.txt");
+	state = read.readFile("config/state.txt");
+	furniture = read.readFile("config/furniture.txt");
+	lightning = read.readFile("config/lightning.txt");
+	size = read.readFile("config/size.txt");
 }
 
 bool RoomController::createDungeon(const int newLevel, const int newWidth){
@@ -30,7 +30,7 @@ bool RoomController::createDungeon(const int newLevel, const int newWidth){
 			mapLevel++;
 			for (int currentWidth = 1; currentWidth <= width; currentWidth++){
 				Room *room = new Room();
-				room->level = level;
+				room->setLevel(level);
 				room->setDescription(createDescription());
 				rooms[mapLevel][currentWidth] = room;
 		
@@ -48,7 +48,7 @@ std::vector<Room>* RoomController::makeRow(){
 	std::vector<Room>* roomsNew = new std::vector<Room>();
 	for (int currentWidth = 1; currentWidth <= width; currentWidth++){
 		Room *room = new Room();
-		room->level = level;
+		room->setLevel(level);
 		room->setDescription(createDescription());
 		//roomsNew[currentWidth] = room;
 	}
@@ -129,7 +129,7 @@ void RoomController::showMap(){
 
 			if (currentRoom == startRoom){				
 				printf("   s   ");				
-			}else if (currentRoom->visited){
+			}else if (currentRoom->isVisited()){
 				printf("   r   ");
 			}else{
 				printf("   .   ");
