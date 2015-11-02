@@ -14,6 +14,10 @@ void Room::setDescription(std::string newDescr) {
 	description = newDescr;
 }
 
+void Room::printDescription(){
+	cout << description << endl;
+}
+
 void Room::setNeighbours(Exits exit, Room room) {
 	neighbors[exit] = room;
 }
@@ -35,7 +39,10 @@ Room Room::getExit(Exits exit) {
 }
 
 bool Room::isVisited() {
-	return visited;
+	if (currentState == new UnvisitedRoomState){
+		return false;
+	}
+	return true;
 }
 
 std::map<int, pair<TYPES::ACTION_LIST, string>> Room::getCommands()

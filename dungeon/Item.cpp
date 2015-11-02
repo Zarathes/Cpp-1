@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Item.h"
 
-void Item::setName(std::string name){
-	Item::name = name;
+void Item::setName(std::string nameNew){
+	name = nameNew;
 }
 
 void Item::setDescription(std::string descr){

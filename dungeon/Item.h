@@ -5,7 +5,7 @@
 
 class Item{
 public:
-	void setName(std::string name);
+	void setName(std::string nameNew);
 	void setDescription(std::string descr);
 	std::string getName();
 	std::string getDescription();

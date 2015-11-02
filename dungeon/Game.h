@@ -4,6 +4,8 @@
 #include <map>
 
 #include "Room.h"
+#include "hero.h"
+
 class Game
 {
 public:
@@ -16,6 +18,8 @@ private:
 	
 	bool generateDungeon();
 	void start();
+
+	Hero *hero;
 
 	Room *currentRoom;
 
