@@ -11,18 +11,17 @@ public:
 	~Game();
 private:
 	bool running;
-	std::map<int, std::string> actions;
+
+	int inputNumber(std::string question);
 	
+	bool generateDungeon();
 	void start();
 
 	Room *currentRoom;
 
 	std::map<int , std::pair<TYPES::ACTION_LIST, std::string>> commands;
-
-	void printActions();
-	std::string readAction();
-
-	void handelAction(std::string action);
+	void printCommands();
+	void handelCommand();
 };
 
 #endif

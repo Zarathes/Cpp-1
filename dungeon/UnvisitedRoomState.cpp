@@ -6,7 +6,6 @@
 using namespace std;
 
 UnvisitedRoomState::UnvisitedRoomState(){
-	cout << "Entering UnvisitedRoomState" << endl;
 }
 
 void UnvisitedRoomState::goNext(Client* context) {

@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -162,7 +162,7 @@
     <ClInclude Include="ReadTextFile.h" />
     <ClInclude Include="Reciever.h" />
     <ClInclude Include="Room.h" />
-    <ClInclude Include="RoomController.h" />
+    <ClInclude Include="Generator.h" />
     <ClInclude Include="RoomState.h" />
     <ClInclude Include="Stairs.h" />
     <ClInclude Include="StairsDown.h" />
@@ -188,7 +188,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ReadTextFile.cpp" />
     <ClCompile Include="Room.cpp" />
-    <ClCompile Include="RoomController.cpp" />
+    <ClCompile Include="Generator.cpp" />
     <ClCompile Include="Stairs.cpp" />
     <ClCompile Include="StairsDown.cpp" />
     <ClCompile Include="StairsUp.cpp" />

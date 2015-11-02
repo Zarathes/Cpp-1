@@ -93,9 +93,6 @@
     <ClInclude Include="InfestedRoomState.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
-    <ClInclude Include="RoomController.h">
-      <Filter>Header Files\Room</Filter>
-    </ClInclude>
     <ClInclude Include="Room.h">
       <Filter>Header Files\Room</Filter>
     </ClInclude>
@@ -104,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="UnvisitedRoomState.h">
       <Filter>Header Files\Room</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -161,11 +161,11 @@
     <ClCompile Include="Room.cpp">
       <Filter>Source Files\Room</Filter>
     </ClCompile>
-    <ClCompile Include="RoomController.cpp">
-      <Filter>Source Files\Room</Filter>
-    </ClCompile>
     <ClCompile Include="UnvisitedRoomState.cpp">
       <Filter>Source Files\Room</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
