@@ -3,22 +3,10 @@
 using std::cout;
 using std::cin;
 using std::endl;
+#include <iostream>
+#include <string>
 
-int Hero::getExperiancePoints(){
-	return Hero::experiancePoints;
-}
 
-int Hero::getPerceptionPoints(){
-	return Hero::perceptionPoints;
-}
-
-std::list<Item> Hero::getInventory(){
-	return Hero::inventory;
-}
-
-std::list<Equipable> Hero::getEquipment(){
-	return Hero::equipment;
-}
 
 Room Hero::getCurrentRoom(){
 	return Hero::currentRoom;
@@ -32,7 +20,28 @@ void Hero::showStatistics(){
 }
 
 void Hero::showBag(){
-	cout << "show bag" << endl;
+	cout << "This is in your bag " << endl;
+	cout << "Equipment: " << endl;
+	if (equipment.empty()){
+		cout << "No equipment" << endl;
+	}
+	else{
+		for (Equipable eq : equipment){
+			cout << eq.getName() << endl;
+		}
+	}
+	
+	cout << "Consumable: " << endl;
+	if (consumable.empty()){
+		cout << "No inventory" << endl;
+	}
+	else{
+		for (Consumable cons : consumable){
+			cout << cons.getName() << endl;
+		}
+	}
+	
+	cout << "" << endl;
 }
 
 void Hero::SetCommand(TYPES::ACTION_LIST command){

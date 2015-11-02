@@ -3,18 +3,14 @@
 
 
 #include <iostream>
-#include <list>
+#include <vector>
 #include "Character.h"
 #include "Room.h"
-#include "Item.h"
 #include "Equipable.h"
+#include "Consumable.h"
 
 class Hero: public Character{
 public:
-	int getExperiancePoints();
-	int getPerceptionPoints();
-	std::list<Item> getInventory();
-	std::list<Equipable> getEquipment();
 	Room getCurrentRoom();
 	void showStatistics();
 	void showBag();
@@ -24,8 +20,8 @@ public:
 private:
 	int experiancePoints;
 	int perceptionPoints;
-	std::list<Item> inventory;
-	std::list<Equipable> equipment;
+	std::vector<Consumable> consumable;
+	std::vector<Equipable> equipment;
 	Room currentRoom;
 };
 
