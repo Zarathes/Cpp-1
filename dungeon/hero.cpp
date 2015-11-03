@@ -29,7 +29,9 @@ void Hero::insertCurrentRoom(Room *room){
 	if(currentRoom->hasTrap()){
 		handleTrap();
 	}
-	currentRoom->enteringRoom();
+	if (living()){
+		currentRoom->enteringRoom();
+	}
 }
 
 Room* Hero::getCurrentRoom(){
@@ -133,8 +135,9 @@ void Hero::underAttack(int points){
 
 void Hero::handleTrap(){
 	Trap* trap = currentRoom->getTrap();
-	lifePoints -= trap->attack();
+	underAttack(trap->attack());
 	perceptionPoints += trap->getPerception();
+	
 }
 
 bool Hero::living(){
