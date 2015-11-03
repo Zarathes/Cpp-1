@@ -1,7 +1,6 @@
 #include "room.h"
 #include <iostream>
 #include "ReadTextFile.h"
-
 #include <vector>
 
 
@@ -37,6 +36,7 @@ private:
 	std::vector< std::vector< std::vector<Room> > > dungeon;
 	std::string createDescription();
 	std::vector<Enemy*> createEnemies();
-	std::vector<Item*> createItems();
+	std::vector<Consumable*> createConsumableItems();
+	std::vector<Equipable*> createEquipableItems();
 	std::vector<Exits> createExit(int width, int height);
 };

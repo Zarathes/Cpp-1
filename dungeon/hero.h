@@ -7,8 +7,6 @@
 #include <stack>
 #include "Character.h"
 #include "Room.h"
-#include "Equipable.h"
-#include "Consumable.h"
 
 class Hero: public Character{
 public:
