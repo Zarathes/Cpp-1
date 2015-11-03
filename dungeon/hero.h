@@ -14,8 +14,8 @@ class Hero: public Character{
 public:
 	Hero();
 
-	void insertCurrentRoom(Room room);
-	Room getCurrentRoom();
+	void insertCurrentRoom(Room *room);
+	Room* getCurrentRoom();
 	void showStatistics();
 	void showBag();
 	void underAttack(int points);
@@ -28,8 +28,8 @@ private:
 	int perceptionPoints;
 	std::vector<Consumable> consumable;
 	std::vector<Equipable> equipment;
-	std::stack<Room> rooms;
-	Room currentRoom;
+	std::stack<Room*> rooms;
+	Room *currentRoom;
 };
 
 #endif
