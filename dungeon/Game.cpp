@@ -13,7 +13,6 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-#include "Generator.h"
 #include "ConcreteCommand.h"
 
 //exceptions
@@ -59,7 +58,7 @@ bool Game::generateDungeon() {
 	int width = inputNumber("What should the dungeon width be?");
 	int height = inputNumber("What should the dungeon height be?");
 
-	Generator *dungenGenerator = new Generator(levels, width, height);
+	dungenGenerator = new Generator(levels, width, height);
 	if (dungenGenerator->createDungeon()) {
 		hero->insertCurrentRoom(dungenGenerator->getStartRoom());
 		return true;
@@ -116,8 +115,7 @@ void Game::handelCommand()
 				RestCommand(hero->getCurrentRoom()).Execute();
 				break;
 			case TYPES::ACTION_LIST::VIEW_MAP:
-				//should be roomcontroller.showmap
-				ViewMapCommand(hero->getCurrentRoom()).Execute();
+				dungenGenerator->showMap(hero->getCurrentRoom()->getDepth());
 				break;
 			case TYPES::ACTION_LIST::VIEW_HERO:
 				ViewHeroCommand(hero).Execute();

@@ -9,6 +9,7 @@ public:
 	Generator(int d, int w, int h);
 	bool createDungeon();
 	Room* getStartRoom();
+	void showMap(int CurrentLevel);
 private:
 	std::vector<std::string> size;
 	std::vector<std::string> roomType;

@@ -11,6 +11,7 @@ public:
 
 	void goNext(Client* context);
 
+	const char* classname() { return "InfestedRoomState"; }
 	~InfestedRoomState();
 };
 

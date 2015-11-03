@@ -156,6 +156,15 @@ void Room::Execute()
 	}
 }
 
+int Room::getDepth() {
+	return depth;
+}
+
+void Room::setDepth(int d) {
+	 depth = d;
+}
+
+
 Room::~Room() {
 //	delete currentState;
 }

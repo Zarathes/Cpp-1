@@ -26,6 +26,8 @@ public:
 	void setNeighbours(Exits exit, std::pair<std::string, Room*> room);
 	void setEnemies(std::vector<Enemy*> newEnemies);
 	void deleteEnemy(Enemy enemy);
+	int getDepth();
+	void setDepth(int d);
 	void setEquipableItems(std::vector<Equipable*> newItems);
 	void setConsumableItems(std::vector<Consumable*> newItems);
 	std::vector<Equipable*> getEquipableItems();
@@ -48,6 +50,7 @@ private:
 	int level;
 	bool visited = true;
 
+	int depth;
 	std::string description;
 	std::map<Exits, std::pair<std::string, Room*>> neighbors;
 	std::vector<Enemy*> enemies;
