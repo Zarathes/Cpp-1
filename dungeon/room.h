@@ -33,7 +33,7 @@ public:
 	Room* getNeighbour(Exits exit);
 	std::map<Exits, std::pair<std::string, Room*>> getNeighbours();
 
-	void fight();
+	int fight();
 
 	bool isVisited();
 

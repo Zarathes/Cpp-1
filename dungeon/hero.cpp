@@ -97,8 +97,9 @@ void Hero::handelRoomChange()
 			for (auto const& a : neighbors)
 			{
 				if (a.first == command) {
-					insertCurrentRoom(a.second.second);
-					currentRoom->enteringRoom();
+
+					//enemies attack
+					underAttack(currentRoom->fight());
 				}
 			}
 		}
@@ -123,7 +124,6 @@ void Hero::underAttack(int points){
 	if (lifePoints <= 0){
 		alive = false;
 	}
-	//check alive
 }
 
 bool Hero::living(){

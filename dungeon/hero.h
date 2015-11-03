@@ -1,12 +1,10 @@
 #ifndef __hero__
 #define __hero__
 
-
-#include <iostream>
+#include "character.h"
+#include "room.h"
 #include <vector>
 #include <stack>
-#include "Character.h"
-#include "Room.h"
 
 class Hero: public Character{
 public:

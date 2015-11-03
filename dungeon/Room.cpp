@@ -122,13 +122,13 @@ bool Room::isVisited() {
 	return true;
 }
 
-void Room::fight(){
-	//hero attack
-	//enemy attacks
+int Room::fight(){
+	int attackpoints = 0;
 
 	for (int i = 0; i < enemies.size(); i++){
-		//int x = enemies[i].attack();
+		attackpoints += enemies[i]->attack();
 	}
+	return attackpoints;
 }
 
 std::map<int, pair<TYPES::ACTION_LIST, string>> Room::getCommands()
