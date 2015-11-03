@@ -10,7 +10,6 @@ class Hero: public Character{
 public:
 	Hero();
 
-
 	void handelRoomChange();
 	void insertCurrentRoom(Room *room);
 	Room* getCurrentRoom();
@@ -28,6 +27,7 @@ private:
 	int level;
 
 	void checkLevel();
+	void handleTrap();
 	std::vector<Consumable*> consumable;
 	std::vector<Equipable*> equipment;
 	std::stack<Room*> rooms;

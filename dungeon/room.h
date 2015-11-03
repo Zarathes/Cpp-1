@@ -25,7 +25,6 @@ public:
 	void enteringRoom();
 	void setNeighbours(Exits exit, std::pair<std::string, Room*> room);
 	void setEnemies(std::vector<Enemy*> newEnemies);
-	void deleteEnemy(Enemy enemy);
 	void setEquipableItems(std::vector<Equipable*> newItems);
 	void setConsumableItems(std::vector<Consumable*> newItems);
 	std::vector<Equipable*> getEquipableItems();
@@ -35,8 +34,12 @@ public:
 
 	int fight();
 	int attackEnemies(int attackPoints);
-
+	
 	bool isVisited();
+
+	bool hasTrap();
+	Trap* getTrap();
+	void deleteTrap();
 
 	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();
 
@@ -54,7 +57,7 @@ private:
 	std::vector<Enemy*> enemies;
 	std::vector<Equipable*> equipableItems;
 	std::vector<Consumable*> consumableItems;
-	Trap trap;
+	Trap* trap;
 
 	TYPES::ACTION_LIST currentCommand;
 };

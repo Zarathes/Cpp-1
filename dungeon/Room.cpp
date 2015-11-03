@@ -21,7 +21,6 @@ void Room::printDescription(){
 }
 
 void Room::enteringRoom(){
-	
 	if (enemies.empty()){
 		currentState = new ClearedRoomState();
 		printDescription();
@@ -75,10 +74,6 @@ void Room::setEnemies(std::vector<Enemy*> newEnemies) {
 	enemies = newEnemies;
 }
 
-void Room::deleteEnemy(Enemy enemy) {
-	//enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
-}
-
 void Room::setEquipableItems(std::vector<Equipable*> newItems) {
 	equipableItems = newItems;
 }
@@ -105,6 +100,17 @@ bool Room::isVisited() {
 		return false;
 	}
 	return true;
+}
+
+bool Room::hasTrap(){
+	if (trap != nullptr){
+		return true;
+	}
+	return false;
+}
+
+Trap* Room::getTrap(){
+	return trap;
 }
 
 int Room::attackEnemies(int attackPoints){

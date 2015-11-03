@@ -25,6 +25,10 @@ Hero::Hero() : Character("Hero"){
 void Hero::insertCurrentRoom(Room *room){	
 	rooms.push(room);
 	currentRoom = room;
+	//check op val
+	if(currentRoom->hasTrap()){
+		handleTrap();
+	}
 	currentRoom->enteringRoom();
 }
 
@@ -127,6 +131,13 @@ void Hero::underAttack(int points){
 	}
 }
 
+void Hero::handleTrap(){
+	Trap* trap = currentRoom->getTrap();
+	lifePoints -= trap->attack();
+	perceptionPoints += trap->getPerception();
+	currentRoom->deleteTrap();
+}
+
 bool Hero::living(){
 	if (!alive){
 		cout << endl;
@@ -204,7 +215,6 @@ void Hero::fight(){
 
 void Hero::checkLevel(){
 	level = experiancePoints/10;
-	perceptionPoints = level * 10;
 }
 
 void Hero::run(){
