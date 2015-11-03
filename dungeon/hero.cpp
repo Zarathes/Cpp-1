@@ -36,8 +36,8 @@ void Hero::showBag(){
 		cout << "No equipment" << endl;
 	}
 	else{
-		for (Equipable eq : equipment){
-			cout << eq.getName() << endl;
+		for (Equipable* eq : equipment){
+			cout << eq->getName() << endl;
 		}
 	}
 	
@@ -46,8 +46,8 @@ void Hero::showBag(){
 		cout << "No inventory" << endl;
 	}
 	else{
-		for (Consumable cons : consumable){
-			cout << cons.getName() << endl;
+		for (Consumable* cons : consumable){
+			cout << cons->getName() << endl;
 		}
 	}
 	
@@ -82,15 +82,16 @@ void Hero::run(){
 
 void Hero::getItems(){
 	//get items en doe ze in bag
-	/*for (auto item : currentRoom->getItems()){
-		//if (item == Consumable){
-	//		consumable.push_back(item);
-	//	}else if (item == Equipable){
-		//	equipment.push_back(item);
-	//	}
-
+	for (auto item : currentRoom->getConsumableItems()){
+		consumable.push_back(item);		
 		cout << "Added " << item->getName() << " to your bag" << endl;
-	}*/
+	}
+	for (auto item : currentRoom->getEquipableItems()){
+		equipment.push_back(item);
+		cout << "Added " << item->getName() << " to your bag" << endl;
+	}
+	currentRoom->setConsumableItems(currentRoom->getConsumableItems().clear());
+
 }
 
 void Hero::Execute(){

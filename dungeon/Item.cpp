@@ -15,7 +15,7 @@ void Item::setDescription(std::string descr){
 }
 
 std::string Item::getName(){
-	return Item::name;
+	return name;
 }
 
 std::string Item::getDescription(){

@@ -8,7 +8,4 @@ public:
 	std::string getDescription();
 	void use();
 private:
-	std::string name;
-	std::string description;
-	int points;
 };

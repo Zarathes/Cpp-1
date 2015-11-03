@@ -7,7 +7,7 @@ using std::endl;
 using std::string;
 
 Enemy::Enemy(string name, int attackPoints, int lifePoints) 
-	: Character(name, attackPower, lifePoints)
+	: Character(name, attackPoints, lifePoints)
 {
 
 }

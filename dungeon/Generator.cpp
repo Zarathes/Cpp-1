@@ -176,7 +176,7 @@ vector<Enemy*> Generator::createEnemies() {
 vector<Consumable*> Generator::createConsumableItems() {
 	vector<Consumable*> infestation;
 
-	int randNumCons = rand() % (2 - -1 + 1) + -1;
+	int randNumCons = rand() % (4 - -1 + 1) + -1;
 	
 	for (int i = 0; i < randNumCons; i++) {
 		string consumable = read.randomNize(consumbableNames);
@@ -190,7 +190,7 @@ vector<Consumable*> Generator::createConsumableItems() {
 
 vector<Equipable*> Generator::createEquipableItems(){
 	vector<Equipable*> infestation;
-	int randNumEq = rand() % (2 - -1 + 1) + -1;
+	int randNumEq = rand() % (4 - -1 + 1) + -1;
 
 	for (int i = 0; i < randNumEq; i++) {
 

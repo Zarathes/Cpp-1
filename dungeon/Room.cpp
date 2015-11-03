@@ -30,8 +30,8 @@ void Room::enteringRoom(){
 		}
 		else{
 			cout << "The room has the following consumable items: " << endl;
-			for (auto item : consumableItems){
-				cout << item->getName() << endl;
+			for (int i = 0; i < consumableItems.size(); i++){
+				cout << consumableItems[i]->getName() << endl;
 			}
 		}
 
@@ -40,8 +40,8 @@ void Room::enteringRoom(){
 		}
 		else{
 			cout << "The room has the following equipable items: " << endl;
-			for (auto item : equipableItems){
-				cout << item->getName() << endl;
+			for (int i = 0; i < equipableItems.size(); i++){
+				cout << equipableItems[i]->getName() << endl;
 			}
 		}
 

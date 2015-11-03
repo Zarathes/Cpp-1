@@ -26,8 +26,8 @@ private:
 	int experiancePoints;
 	int perceptionPoints;
 	bool alive;
-	std::vector<Consumable> consumable;
-	std::vector<Equipable> equipment;
+	std::vector<Consumable*> consumable;
+	std::vector<Equipable*> equipment;
 	std::stack<Room*> rooms;
 
 	void getItems();
