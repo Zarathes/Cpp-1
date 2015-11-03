@@ -135,12 +135,12 @@ bool Hero::living(){
 
 void Hero::fight(){
 	int current = 1;
-
+	int totalLength = equipment.size() + consumable.size();
 	cout << "Choose a action :" << endl;
 	
 	for (int i = 0; i < consumable.size(); i++)
 	{
-		if (current == consumable.size()) {
+		if (current == totalLength) {
 			cout << current << ": " << consumable[i]->getName() << endl;
 		}
 		else {
@@ -152,7 +152,7 @@ void Hero::fight(){
 
 	for (int i = 0; i < equipment.size(); i++)
 	{
-		if (current == consumable.size()) {
+		if (current == totalLength) {
 			cout << current << ": " << equipment[i]->getName() << endl;
 		}
 		else {
@@ -169,7 +169,7 @@ void Hero::fight(){
 	std::string::size_type rest;
 	try {
 		command = std::stoi(input, &rest);
-		int totalLength = equipment.size() + consumable.size();
+		
 		if (command > 0 && command <= totalLength) {
 			//als equipable
 			if (command > consumable.size()){
@@ -202,6 +202,7 @@ void Hero::fight(){
 
 void Hero::checkLevel(){
 	level = experiancePoints/10;
+	perceptionPoints = level * 10;
 }
 
 void Hero::run(){
