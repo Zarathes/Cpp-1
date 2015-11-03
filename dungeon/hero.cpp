@@ -74,10 +74,10 @@ void Hero::handelRoomChange()
 	for (auto const& a : neighbors)
 	{
 		if (current == index) {
-			cout << a.first << ": " << a.second.first << endl;
+			cout << a.first+1 << ": " << a.second.first << endl;
 		}
 		else {
-			cout << a.first << ": " << a.second.first << " | ";
+			cout << a.first+1 << ": " << a.second.first << " | ";
 		}
 
 		current++;
@@ -93,6 +93,7 @@ void Hero::handelRoomChange()
 	std::string::size_type rest;
 	try {
 		command = std::stoi(input, &rest);
+		command--;
 		if (neighbors.find((Exits)command) != neighbors.end()) {
 			for (auto const& a : neighbors)
 			{
@@ -150,7 +151,7 @@ void Hero::getItems(){
 		equipment.push_back(item);
 		cout << "Added " << item->getName() << " to your bag" << endl;
 	}
-	currentRoom->setConsumableItems(currentRoom->getConsumableItems().clear());
+	//currentRoom->setConsumableItems(currentRoom->getConsumableItems().clear());
 
 }
 

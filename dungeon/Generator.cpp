@@ -98,6 +98,27 @@ bool Generator::createDungeon(){
 			}
 		}
 	}
+
+	//Stairs
+	if (dungeon.size() > 1) {
+		for (size_t z = 0; z < dungeon.size(); z++)
+		{
+			if (z != dungeon.size()-1) {
+				int randomWidthUp = rand() % (height - 1 + 1) + 0;
+				int randomHeightUp = rand() % (width - 1 + 1) + 0;
+				int randomWidthDown = rand() % (height - 1 + 1) + 0;
+				int randomHeightDown = rand() % (width - 1 + 1) + 0;
+
+
+				Room *current = &dungeon[z][randomWidthUp][randomHeightUp];
+				Room *neighbor = &dungeon[z+1][randomWidthDown][randomHeightDown];
+				current->setNeighbours(Exits::UP, std::pair<string, Room*>("Up", neighbor));
+				neighbor->setNeighbours(Exits::DOWN, std::pair<string, Room*>("Down", current));
+
+				cout << randomHeightUp << endl;
+			}
+		}
+	}
 	
 	startRoom = &dungeon[0][0][0];
 
@@ -148,8 +169,6 @@ string Generator::createDescription(){
 	descr += "The room is " + stateInput +" and " + lightningInput + ".";
 	
 //	cout << descr << endl;
-
-
 
 	return descr;
 }
