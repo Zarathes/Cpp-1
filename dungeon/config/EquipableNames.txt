@@ -1,1 +1,1 @@
-sword;shield;granate;
+sword;shield;granate;dagger;
