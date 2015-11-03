@@ -34,6 +34,7 @@ public:
 	std::map<Exits, std::pair<std::string, Room*>> getNeighbours();
 
 	int fight();
+	int attackEnemies(int attackPoints);
 
 	bool isVisited();
 

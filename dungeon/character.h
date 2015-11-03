@@ -17,6 +17,8 @@ public:
 	Character(std::string name, int attackPoints, int lifePoints);
 	int getLifePoints();
 	void showStatistics();
+	void underAttack(int points);
+	bool living();
 //	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();
 
 //	void SetCommand(TYPES::ACTION_LIST command);
@@ -29,7 +31,7 @@ protected:
 	int attackPower;
 	int defencePower;
 	TYPES::ACTION_LIST currentCommand;
-private: 
+	bool alive = true;
 	
 };
 

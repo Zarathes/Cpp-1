@@ -21,3 +21,7 @@ std::string Item::getName(){
 std::string Item::getDescription(){
 	return Item::description;
 }
+
+int Item::use(){
+	return points;
+}

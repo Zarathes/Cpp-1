@@ -74,6 +74,8 @@ void Game::start(){
 		//leef ik nog?
 		running = hero->living();
 	}
+	cout << endl;
+	cout << "you died" << endl;
 }
 
 void Game::printCommands()

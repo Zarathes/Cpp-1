@@ -122,6 +122,21 @@ bool Room::isVisited() {
 	return true;
 }
 
+int Room::attackEnemies(int attackPoints){
+	int experiencepoints = 0;
+	for (int i = 0; i < enemies.size(); i++){
+		enemies[i]->underAttack(attackPoints);
+		if (!enemies[i]->living()){
+			cout << "You defeated " << enemies[i]->getName() << endl;
+			//delete enemie
+			delete enemies[i];
+			enemies.erase(enemies.begin()+i);
+			experiencepoints += 10;
+		}
+	}
+	return experiencepoints;
+}
+
 int Room::fight(){
 	int attackpoints = 0;
 

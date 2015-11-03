@@ -21,3 +21,7 @@ std::string Consumable::getName(){
 std::string Consumable::getDescription(){
 	return description;
 }
+
+int Consumable::use(){
+	return points;
+}
