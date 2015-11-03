@@ -62,6 +62,7 @@ bool Game::generateDungeon() {
 	Generator *dungenGenerator = new Generator(levels, width, height);
 	if (dungenGenerator->createDungeon()) {
 		hero->insertCurrentRoom(dungenGenerator->getStartRoom());
+		endRoom = dungenGenerator->getEndRoom();
 		return true;
 	}
 	return false;
@@ -72,10 +73,20 @@ void Game::start(){
 		commands = hero->getCurrentRoom()->getCommands();
 		handelCommand();
 		//leef ik nog?
-		running = hero->living();
+		if (running = hero->living()){
+			running = !finished();
+		}
 	}
-	cout << endl;
-	cout << "you died" << endl;
+	cin.get();
+}
+
+bool Game::finished(){
+	if (hero->getCurrentRoom() ==	endRoom){
+		cout << endl;
+		cout << "CONGRATULATIONS YOU WON" << endl;
+		return true;
+	}
+	return false;
 }
 
 void Game::printCommands()

@@ -9,7 +9,7 @@ using std::string;
 Enemy::Enemy(string name, int attackPoints, int lifePoints) 
 	: Character(name, attackPoints, lifePoints)
 {
-
+	alive = true;
 }
 
 string Enemy::getName(){

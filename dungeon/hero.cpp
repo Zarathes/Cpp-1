@@ -130,6 +130,10 @@ void Hero::underAttack(int points){
 }
 
 bool Hero::living(){
+	if (!alive){
+		cout << endl;
+		cout << "you died" << endl;
+	}
 	return alive;
 }
 

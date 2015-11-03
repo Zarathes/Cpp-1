@@ -47,7 +47,7 @@ bool Generator::createDungeon(){
 			// height
 			for (auto &c : b) {
 				c.setDescription(createDescription());
-				c.setEnemies(createEnemies());
+			//	c.setEnemies(createEnemies());
 				c.setConsumableItems(createConsumableItems());
 				c.setEquipableItems(createEquipableItems());
 			}
@@ -121,6 +121,13 @@ bool Generator::createDungeon(){
 	}
 	
 	startRoom = &dungeon[0][0][0];
+	endRoom = &dungeon[depth-1][width-1][height-1];
+
+	for (auto neigh : endRoom->getNeighbours()){
+		neigh.second.second->setEnemies(createEndEnemy());
+	}
+	std::vector<Enemy*> empty;
+	endRoom->setEnemies(empty);
 
 	return true;
 }
@@ -192,6 +199,21 @@ vector<Enemy*> Generator::createEnemies() {
 	return infestation;
 }
 
+vector<Enemy*> Generator::createEndEnemy(){
+	vector<Enemy*> infestation;
+
+		string enemiesName = read.randomNize(read.readFile("config/endBossNames.txt"));
+		string lifePointsString = read.randomNize(read.readFile("config/endBossLife.txt"));
+		string attackPointsString = read.randomNize(read.readFile("config/endBossAttack.txt"));
+
+		int lifePointsNew = atoi(lifePointsString.c_str());
+		int attackPointsNew = atoi(attackPointsString.c_str());
+
+		infestation.push_back(new Enemy(enemiesName, attackPointsNew, 50));
+
+	return infestation;
+}
+
 vector<Consumable*> Generator::createConsumableItems() {
 	vector<Consumable*> infestation;
 
@@ -209,7 +231,7 @@ vector<Consumable*> Generator::createConsumableItems() {
 
 vector<Equipable*> Generator::createEquipableItems(){
 	vector<Equipable*> infestation;
-	int randNumEq = rand() % (4 - -1 + 1) + -1;
+	int randNumEq = rand() % (2 - -1 + 1) + -1;
 
 	for (int i = 0; i < randNumEq; i++) {
 
@@ -226,4 +248,8 @@ vector<Equipable*> Generator::createEquipableItems(){
 
 Room* Generator::getStartRoom() {
 	return startRoom;
+}
+
+Room* Generator::getEndRoom(){
+	return endRoom;
 }

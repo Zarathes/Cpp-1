@@ -9,6 +9,7 @@ public:
 	Generator(int d, int w, int h);
 	bool createDungeon();
 	Room* getStartRoom();
+	Room* getEndRoom();
 private:
 	std::vector<std::string> size;
 	std::vector<std::string> roomType;
@@ -31,11 +32,13 @@ private:
 	int height;
 
 	Room* startRoom;
+	Room* endRoom;
 	ReadTextFile read;
 	
 	std::vector< std::vector< std::vector<Room> > > dungeon;
 	std::string createDescription();
 	std::vector<Enemy*> createEnemies();
+	std::vector<Enemy*> createEndEnemy();
 	std::vector<Consumable*> createConsumableItems();
 	std::vector<Equipable*> createEquipableItems();
 	std::vector<Exits> createExit(int width, int height);

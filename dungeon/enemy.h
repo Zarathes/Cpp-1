@@ -15,5 +15,4 @@ public:
 	void Execute();
 private:
 	std::string description;
-	int lifePoints;
 };

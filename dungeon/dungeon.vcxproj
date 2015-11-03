@@ -144,6 +144,9 @@
   <ItemGroup>
     <Text Include="config\attackPoints.txt" />
     <Text Include="config\consumableNames.txt" />
+    <Text Include="config\endBossAttack.txt" />
+    <Text Include="config\endBossLife.txt" />
+    <Text Include="config\endBossNames.txt" />
     <Text Include="config\enemies.txt" />
     <Text Include="config\EquipableNames.txt" />
     <Text Include="config\furniture.txt" />

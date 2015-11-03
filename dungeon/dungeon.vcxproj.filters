@@ -184,5 +184,8 @@
     <Text Include="config\itemPoints.txt" />
     <Text Include="config\EquipableNames.txt" />
     <Text Include="config\consumableNames.txt" />
+    <Text Include="config\endBossNames.txt" />
+    <Text Include="config\endBossAttack.txt" />
+    <Text Include="config\endBossLife.txt" />
   </ItemGroup>
 </Project>
