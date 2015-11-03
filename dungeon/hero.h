@@ -12,6 +12,8 @@ class Hero: public Character{
 public:
 	Hero();
 
+
+	void handelRoomChange();
 	void insertCurrentRoom(Room *room);
 	Room* getCurrentRoom();
 	void showStatistics();

@@ -21,7 +21,7 @@ using std::invalid_argument;
 using std::out_of_range;
 
 
-Game::Game() : currentRoom(nullptr), running{ true }
+Game::Game() : running{ true }
 {	
 	hero = new Hero();
 	if (generateDungeon()) {
@@ -61,8 +61,7 @@ bool Game::generateDungeon() {
 
 	Generator *dungenGenerator = new Generator(levels, width, height);
 	if (dungenGenerator->createDungeon()) {
-		currentRoom = dungenGenerator->getStartRoom();
-		hero->insertCurrentRoom(currentRoom);
+		hero->insertCurrentRoom(dungenGenerator->getStartRoom());
 		return true;
 	}
 	return false;
@@ -70,8 +69,7 @@ bool Game::generateDungeon() {
 
 void Game::start(){
 	while (running) {
-		currentRoom->enteringRoom();
-		commands = currentRoom->getCommands();
+		commands = hero->getCurrentRoom()->getCommands();
 		handelCommand();
 		running = hero->living();
 	}
@@ -106,28 +104,26 @@ void Game::handelCommand()
 
 			switch (commands[command].first) {
 			case TYPES::ACTION_LIST::FIGHT:
-				FightCommand(currentRoom).Execute();
+				FightCommand(hero->getCurrentRoom()).Execute();
 				break;
 			case TYPES::ACTION_LIST::RUN:
 				RunCommand(hero).Execute();
-				currentRoom = hero->getCurrentRoom();
 				break;
 			case TYPES::ACTION_LIST::SEE_BAG:
 				SeeBagCommand(hero).Execute();
 				break;
 			case TYPES::ACTION_LIST::REST:
-				RestCommand(currentRoom).Execute();
+				RestCommand(hero->getCurrentRoom()).Execute();
 				break;
 			case TYPES::ACTION_LIST::VIEW_MAP:
 				//should be roomcontroller.showmap
-				ViewMapCommand(currentRoom).Execute();
+				ViewMapCommand(hero->getCurrentRoom()).Execute();
 				break;
 			case TYPES::ACTION_LIST::VIEW_HERO:
 				ViewHeroCommand(hero).Execute();
 				break;
 			case TYPES::ACTION_LIST::CHANGE_ROOM:
-				ChangeRoomCommand(currentRoom).Execute();
-				currentRoom = hero->getCurrentRoom();
+				ChangeRoomCommand(hero).Execute();
 				break;
 			case TYPES::ACTION_LIST::GET_ITEMS:
 				GetItemsCommand(hero).Execute();

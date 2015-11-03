@@ -5,7 +5,6 @@
 using namespace std;
 
 InfestedRoomState::InfestedRoomState() {
-	cout << "Entering InfestedRoomState" << endl;
 }
 
 void InfestedRoomState::goNext(Client* context) {
