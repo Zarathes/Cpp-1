@@ -47,7 +47,7 @@ bool Generator::createDungeon(){
 			// height
 			for (auto &c : b) {
 				c.setDescription(createDescription());
-			//	c.setEnemies(createEnemies());
+				c.setEnemies(createEnemies());
 				c.setConsumableItems(createConsumableItems());
 				c.setEquipableItems(createEquipableItems());
 			}

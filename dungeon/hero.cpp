@@ -101,7 +101,6 @@ void Hero::handelRoomChange()
 			{
 				if (a.first == command) {
 					insertCurrentRoom(a.second.second);
-					currentRoom->enteringRoom();
 				}
 			}
 		}
@@ -126,7 +125,6 @@ void Hero::underAttack(int points){
 	if (lifePoints <= 0){
 		alive = false;
 	}
-	//check alive
 }
 
 bool Hero::living(){
@@ -189,12 +187,12 @@ void Hero::fight(){
 				delete consumable[command];
 				consumable.erase(consumable.begin()+command);
 			}
+			underAttack(currentRoom->fight());
+			currentRoom->enteringRoom();
 		}
 		else {
 			throw invalid_argument("No valid Action");
 		}
-		underAttack(currentRoom->fight());
-		currentRoom->enteringRoom();
 	}
 	catch (const invalid_argument& ia) {
 		cout << "Invalid arguments: " << ia.what() << endl;
