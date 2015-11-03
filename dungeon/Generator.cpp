@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Generator.h"
 #include "Stairs.h"
+#include "Equipable.h"
+#include "Consumable.h"
 
 using std::cout;
 using std::cin;
@@ -28,9 +30,14 @@ Generator::Generator(int d, int w, int h)
 	state = read.readFile("config/state.txt");
 	furniture = read.readFile("config/furniture.txt");
 	lightning = read.readFile("config/lightning.txt");
+
 	enemies = read.readFile("config/enemies.txt");
 	attackPointsEnemy = read.readFile("config/attackPoints.txt");
 	lifePointsEnemy = read.readFile("config/lifePoints.txt");
+	
+	equipableNames = read.readFile("config/EquipableNames.txt");
+	consumbableNames = read.readFile("config/ConsumableNames.txt");
+	attackPointsItem = read.readFile("config/itemPoints.txt");
 }
 
 bool Generator::createDungeon(){
@@ -41,7 +48,8 @@ bool Generator::createDungeon(){
 			// height
 			for (auto &c : b) {
 				c.setDescription(createDescription());
-				c.setEnemies(createEnemies());
+			//	c.setEnemies(createEnemies());
+				c.setItems(createItems());
 			}
 		}
 	}
@@ -160,6 +168,32 @@ vector<Enemy*> Generator::createEnemies() {
 		int attackPointsNew = atoi(attackPointsString.c_str());
 
 		infestation.push_back(new Enemy(enemiesInput, attackPointsNew, lifePointsNew));
+	}
+
+	return infestation;
+}
+
+vector<Item*> Generator::createItems() {
+	vector<Item*> infestation;
+
+	int randNumCons = rand() % (2 - -1 + 1) + -1;
+	int randNumEq = rand() % (2 - -1 + 1) + -1;
+
+	for (int i = 0; i < randNumCons; i++) {
+		string consumable = read.randomNize(consumbableNames);
+		string pointsString = read.randomNize(attackPointsItem);
+		int attackPoints = atoi(pointsString.c_str());
+
+		infestation.push_back(new Consumable(consumable, attackPoints));
+	}
+
+	for (int i = 0; i < randNumEq; i++) {
+
+		string equipable = read.randomNize(equipableNames);
+		string pointsString = read.randomNize(attackPointsItem);
+		int attackPoints = atoi(pointsString.c_str());
+
+		infestation.push_back(new Equipable(equipable, attackPoints));
 	}
 
 	return infestation;

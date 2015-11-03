@@ -10,7 +10,8 @@ namespace TYPES
 		REST,
 		VIEW_MAP,
 		VIEW_HERO,
-		CHANGE_ROOM
+		CHANGE_ROOM,
+		GET_ITEMS
 	};
 };
 

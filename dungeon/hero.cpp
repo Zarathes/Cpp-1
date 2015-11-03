@@ -80,6 +80,13 @@ void Hero::run(){
 	}
 }
 
+void Hero::getItems(){
+	//get items en doe ze in bag
+	for (auto item : currentRoom->getItems()){
+		cout << "Added " << item->getName() << " to your bag" << endl;
+	}
+}
+
 void Hero::Execute(){
 	switch (currentCommand) {
 	case TYPES::ACTION_LIST::VIEW_HERO:
@@ -90,6 +97,9 @@ void Hero::Execute(){
 		break;
 	case TYPES::ACTION_LIST::RUN:
 		run();
+		break;
+	case TYPES::ACTION_LIST::GET_ITEMS:
+		getItems();
 		break;
 	}
 }

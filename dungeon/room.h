@@ -28,7 +28,8 @@ public:
 	void setNeighbours(Exits exit, std::pair<std::string, Room*> room);
 	void setEnemies(std::vector<Enemy*> newEnemies);
 	void deleteEnemy(Enemy enemy);
-	void setItems(std::vector<Item> newItems);
+	void setItems(std::vector<Item*> newItems);
+	std::vector<Item*> getItems();
 	Room* getNeighbour(Exits exit);
 
 	void fight();
@@ -49,7 +50,7 @@ private:
 	std::string description;
 	std::map<Exits, std::pair<std::string, Room*>> neighbors;
 	std::vector<Enemy*> enemies;
-	std::vector<Item> items;
+	std::vector<Item*> items;
 	Trap trap;
 
 	TYPES::ACTION_LIST currentCommand;

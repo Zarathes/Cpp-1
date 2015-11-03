@@ -129,6 +129,9 @@ void Game::handelCommand()
 				ChangeRoomCommand(currentRoom).Execute();
 				currentRoom = hero->getCurrentRoom();
 				break;
+			case TYPES::ACTION_LIST::GET_ITEMS:
+				GetItemsCommand(hero).Execute();
+				break;
 			}			
 		}
 		else {

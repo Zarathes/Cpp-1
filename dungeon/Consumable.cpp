@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "Consumable.h"
 
+Consumable::Consumable(std::string name, int points)
+: Item(name, points)
+{
+}
+
 void Consumable::setName(std::string nameNew){
 	name = nameNew;
 }

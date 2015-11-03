@@ -181,5 +181,8 @@
     <Text Include="config\enemies.txt" />
     <Text Include="lifePoints.txt" />
     <Text Include="config\attackPoints.txt" />
+    <Text Include="config\itemPoints.txt" />
+    <Text Include="config\EquipableNames.txt" />
+    <Text Include="config\consumableNames.txt" />
   </ItemGroup>
 </Project>

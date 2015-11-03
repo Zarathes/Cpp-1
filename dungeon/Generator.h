@@ -16,9 +16,14 @@ private:
 	std::vector<std::string> state;
 	std::vector<std::string> furniture;
 	std::vector<std::string> lightning;
+
 	std::vector<std::string> enemies;
 	std::vector<std::string> attackPointsEnemy;
 	std::vector<std::string> lifePointsEnemy;
+
+	std::vector<std::string> consumbableNames;
+	std::vector<std::string> equipableNames;
+	std::vector<std::string> attackPointsItem;
 
 	int mapLevel;
 
@@ -32,5 +37,6 @@ private:
 	std::vector< std::vector< std::vector<Room> > > dungeon;
 	std::string createDescription();
 	std::vector<Enemy*> createEnemies();
+	std::vector<Item*> createItems();
 	std::vector<Exits> createExit(int width, int height);
 };

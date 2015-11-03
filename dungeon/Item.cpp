@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "Item.h"
 
+Item::Item(std::string name, int points)
+	: name(name), points(points)
+{
+}
+
 void Item::setName(std::string nameNew){
 	name = nameNew;
 }

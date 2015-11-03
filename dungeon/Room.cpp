@@ -25,16 +25,20 @@ void Room::enteringRoom(){
 	if (enemies.empty()){
 		currentState = new ClearedRoomState();
 		printDescription();
+		if (items.empty()){
+			cout << "No items" << endl;
+		}
+		else{
+			cout << "The room has the following items: " << endl;
+			for (auto item : items){
+				cout << item->getName() << endl;
+			}
+		}
 		cout << "This room has an exit to:" << endl;
-		std::map<Exits, Room>::iterator temp;
+		std::map<Exits, std::pair<std::string, Room*>>::iterator temp = neighbors.begin();
 
-		neighbors[NORTH] = Room();
-		neighbors[EAST] = Room();
-
-		std::map<Exits, Room>::iterator test = neighbors.begin();
-
-		while (test != neighbors.end()){
-			switch (test->first) {
+		while (temp != neighbors.end()){
+			switch (temp->first) {
 			case 0:
 				cout << "North" << endl;
 				break;
@@ -48,7 +52,7 @@ void Room::enteringRoom(){
 				cout << "West" << endl;
 				break;
 			}
-			++test;
+			++temp;
 		}
 
 
@@ -62,6 +66,7 @@ void Room::enteringRoom(){
 	}
 }
 
+void Room::setNeighbours(Exits exit, pair<string, Room*> room) {
 	neighbors[exit] = room;
 }
 
@@ -73,9 +78,14 @@ void Room::deleteEnemy(Enemy enemy) {
 	//enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
 }
 
-void Room::setItems(std::vector<Item> newItems) {
+void Room::setItems(std::vector<Item*> newItems) {
 	items = newItems;
 }
+
+std::vector<Item*> Room::getItems(){
+	return items;
+}
+
 
 Room* Room::getNeighbour(Exits exit) {
 	return neighbors[exit].second;
@@ -188,7 +198,7 @@ void Room::handelRoomChange()
 			for (auto const& a : neighbors)
 			{
 				if (a.first == command) {
-					this = a.second.second;
+					//this = a.second.second;
 				}
 			}
 		}

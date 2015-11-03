@@ -143,8 +143,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="config\attackPoints.txt" />
+    <Text Include="config\consumableNames.txt" />
     <Text Include="config\enemies.txt" />
+    <Text Include="config\EquipableNames.txt" />
     <Text Include="config\furniture.txt" />
+    <Text Include="config\itemPoints.txt" />
     <Text Include="config\lightning.txt" />
     <Text Include="config\roomType.txt" />
     <Text Include="config\size.txt" />

@@ -2,6 +2,12 @@
 
 #include "Equipable.h"
 
+
+Equipable::Equipable(std::string name, int points)
+: Item(name, points)
+{
+}
+
 void Equipable::setName(std::string nameNew){
 	name = nameNew;
 }

@@ -33,6 +33,22 @@ public:
 	}
 };
 
+class GetItemsCommand : public Command
+{
+public:
+	GetItemsCommand(Reciever *reciever)
+		: Command(reciever, "Get Items")
+	{
+
+	}
+
+	void Execute()
+	{
+		reciever->SetCommand(TYPES::ACTION_LIST::GET_ITEMS);
+		reciever->Execute();
+	}
+};
+
 class SeeBagCommand : public Command
 {
 public:
