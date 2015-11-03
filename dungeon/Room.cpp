@@ -107,6 +107,44 @@ int Room::inputNumber(string question) {
 	return output;
 }
 
+void Room::handelRoomChange()
+{
+	int current = 1;
+
+	int index = neighbors.size();
+	for (auto const& a : neighbors)
+	{
+		if (current == index) {
+			cout << a.first << ": " << a.second.first << endl;
+		}
+		else {
+			cout << a.first << ": " << a.second.first << " | ";
+		}
+
+		current++;
+	}
+
+	int command = inputNumber("Choose a direction:");
+
+	try {
+		if (neighbors.find((Exits)command) != neighbors.end()) {
+			for (auto const& a : neighbors)
+			{
+				if (a.first == command) {
+					this = a.second.second;
+				}
+			}
+		}
+		else {
+			throw invalid_argument("No valid Action");
+		}
+	}
+	catch (const invalid_argument& ia) {
+		cout << "Invalid arguments: " << ia.what() << endl;
+		handelRoomChange();
+	}
+}
+
 Room::~Room() {
 //	delete currentState;
 }
