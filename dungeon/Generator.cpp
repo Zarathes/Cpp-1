@@ -47,7 +47,7 @@ bool Generator::createDungeon(){
 			// height
 			for (auto &c : b) {
 				c.setDescription(createDescription());
-			//	c.setEnemies(createEnemies());
+				c.setEnemies(createEnemies());
 				c.setConsumableItems(createConsumableItems());
 				c.setEquipableItems(createEquipableItems());
 			}
@@ -157,7 +157,7 @@ string Generator::createDescription(){
 vector<Enemy*> Generator::createEnemies() {
 	vector<Enemy*> infestation;
 
-	int randNum = rand() % (4 - -1 + 1) + -1;	
+	int randNum = rand() % (2 - -1 + 1) + -1;	
 
 	for (int i = 0; i < randNum; i++) {
 		string enemiesInput = read.randomNize(enemies);
@@ -176,7 +176,7 @@ vector<Enemy*> Generator::createEnemies() {
 vector<Consumable*> Generator::createConsumableItems() {
 	vector<Consumable*> infestation;
 
-	int randNumCons = rand() % (4 - -1 + 1) + -1;
+	int randNumCons = rand() % (2 - -1 + 1) + -1;
 	
 	for (int i = 0; i < randNumCons; i++) {
 		string consumable = read.randomNize(consumbableNames);
