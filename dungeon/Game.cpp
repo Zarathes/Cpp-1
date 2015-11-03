@@ -73,6 +73,7 @@ void Game::start(){
 		currentRoom->enteringRoom();
 		commands = currentRoom->getCommands();
 		handelCommand();
+		running = hero->living();
 	}
 }
 
@@ -109,7 +110,7 @@ void Game::handelCommand()
 				break;
 			case TYPES::ACTION_LIST::RUN:
 				RunCommand(hero).Execute();
-				//*currentRoom = hero->getCurrentRoom();
+				currentRoom = hero->getCurrentRoom();
 				break;
 			case TYPES::ACTION_LIST::SEE_BAG:
 				SeeBagCommand(hero).Execute();

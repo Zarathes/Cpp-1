@@ -18,6 +18,8 @@ private:
 	std::vector<std::string> furniture;
 	std::vector<std::string> lightning;
 	std::vector<std::string> enemies;
+	std::vector<std::string> attackPointsEnemy;
+	std::vector<std::string> lifePointsEnemy;
 
 	int level;
 	int mapLevel;

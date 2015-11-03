@@ -8,6 +8,8 @@ using std::endl;
 
 Hero::Hero() : Character("Hero"){
 	rooms = std::stack<Room*>();
+	lifePoints = 250;
+	alive = true;
 }
 
 void Hero::insertCurrentRoom(Room *room){
@@ -21,6 +23,7 @@ Room* Hero::getCurrentRoom(){
 
 void Hero::showStatistics(){
 	cout << "Hero statistics " << endl;
+	cout << "Live points: " << lifePoints << endl;
 	cout << "Experiance points: " << experiancePoints << endl;
 	cout << "Perception points: " << perceptionPoints << endl;
 	cout << "" << endl;
@@ -57,7 +60,14 @@ void Hero::SetCommand(TYPES::ACTION_LIST command){
 
 void Hero::underAttack(int points){
 	lifePoints -= points;
+	if (lifePoints <= 0){
+		alive = false;
+	}
 	//check alive
+}
+
+bool Hero::living(){
+	return alive;
 }
 
 void Hero::run(){

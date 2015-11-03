@@ -3,7 +3,7 @@
 
 class Enemy: public Character{
 public:
-	Enemy(std::string name);
+	Enemy(std::string description, int attackPoints, int lifePoints);
 	std::string getDescription();
 	std::string getName();
 	void showStatistics();

@@ -14,6 +14,7 @@ class Character: public Client, public Reciever
 
 public:
 	Character(std::string name);
+	Character(std::string name, int attackPoints, int lifePoints);
 	int getLifePoints();
 	void showStatistics();
 //	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();

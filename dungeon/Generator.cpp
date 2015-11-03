@@ -26,6 +26,8 @@ Generator::Generator() {
 	furniture = read.readFile("config/furniture.txt");
 	lightning = read.readFile("config/lightning.txt");
 	enemies = read.readFile("config/enemies.txt");
+	attackPointsEnemy = read.readFile("config/attackPoints.txt");
+	lifePointsEnemy = read.readFile("config/lifePoints.txt");
 }
 
 bool Generator::createDungeon(int depth, int width, int height){
@@ -90,11 +92,17 @@ string Generator::createDescription(){
 vector<Enemy*> Generator::createEnemies() {
 	vector<Enemy*> infestation;
 
-	int randNum = rand() % (4 - -1 + 1) + -1;
+	int randNum = rand() % (4 - -1 + 1) + -1;	
 
 	for (int i = 0; i < randNum; i++) {
 		string enemiesInput = read.randomNize(enemies);
-		infestation.push_back(new Enemy(enemiesInput));
+		string lifePointsString = read.randomNize(lifePointsEnemy);
+		string attackPointsString = read.randomNize(attackPointsEnemy);
+
+		int lifePointsNew = atoi(lifePointsString.c_str());
+		int attackPointsNew = atoi(attackPointsString.c_str());
+
+		infestation.push_back(new Enemy(enemiesInput, attackPointsNew, lifePointsNew));
 	}
 
 	return infestation;

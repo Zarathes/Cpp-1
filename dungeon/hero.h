@@ -20,12 +20,14 @@ public:
 	void showBag();
 	void underAttack(int points);
 	void run();
+	bool living();
 
 	void SetCommand(TYPES::ACTION_LIST command);
 	void Execute();
 private:
 	int experiancePoints;
 	int perceptionPoints;
+	bool alive;
 	std::vector<Consumable> consumable;
 	std::vector<Equipable> equipment;
 	std::stack<Room*> rooms;

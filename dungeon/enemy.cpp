@@ -6,8 +6,8 @@ using std::endl;
 
 using std::string;
 
-Enemy::Enemy(string description) 
-	: Character(description)
+Enemy::Enemy(string name, int attackPoints, int lifePoints) 
+	: Character(name, attackPower, lifePoints)
 {
 
 }
@@ -27,7 +27,7 @@ void Enemy::showStatistics(){
 }
 
 int Enemy::attack(){
-	return 0;
+	return attackPower;
 }
 
 void Enemy::SetCommand(TYPES::ACTION_LIST command){

@@ -12,6 +12,11 @@ Character::Character(string n)
 {
 }
 
+Character::Character(string n, int attackPower, int lifePoints)
+: name(n), attackPower(attackPower), lifePoints(lifePoints)
+{
+}
+
 int Character::getLifePoints(){
 	return Character::lifePoints;
 }

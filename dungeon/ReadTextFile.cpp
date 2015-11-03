@@ -7,7 +7,6 @@ using std::cin;
 using std::endl;
 
 std::vector<std::string> ReadTextFile::readFile(std::string source){
-//	source = "../size.txt";
 	std::ifstream input_file{ source };
 	std::string line;
 	std::vector<std::string> strings;
