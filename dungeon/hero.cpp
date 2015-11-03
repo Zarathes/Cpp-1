@@ -142,16 +142,28 @@ void Hero::run(){
 
 void Hero::getItems(){
 	//get items en doe ze in bag
-	for (auto item : currentRoom->getConsumableItems()){
-		consumable.push_back(item);		
-		cout << "Added " << item->getName() << " to your bag" << endl;
+	if (currentRoom->getConsumableItems().empty() && currentRoom->getEquipableItems().empty()){
+		cout << "No items to get" << endl;
+		currentRoom->enteringRoom();
 	}
-	for (auto item : currentRoom->getEquipableItems()){
-		equipment.push_back(item);
-		cout << "Added " << item->getName() << " to your bag" << endl;
-	}
-	currentRoom->setConsumableItems(currentRoom->getConsumableItems().clear());
+	else{
+		for (auto item : currentRoom->getConsumableItems()){
+			consumable.push_back(item);
+			cout << "Added " << item->getName() << " to your bag" << endl;
+		}
+		for (auto item : currentRoom->getEquipableItems()){
+			equipment.push_back(item);
+			cout << "Added " << item->getName() << " to your bag" << endl;
+		}
+		std::vector<Equipable*> emptyEQ = currentRoom->getEquipableItems();
+		emptyEQ.clear();
 
+		std::vector<Consumable*> emptyCO = currentRoom->getConsumableItems();
+		emptyCO.clear();
+
+		currentRoom->setConsumableItems(emptyCO);
+		currentRoom->setEquipableItems(emptyEQ);
+	}
 }
 
 void Hero::Execute(){
