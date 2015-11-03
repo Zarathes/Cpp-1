@@ -123,7 +123,7 @@ bool Generator::createDungeon(){
 	startRoom = &dungeon[0][0][0];
 	endRoom = &dungeon[depth-1][width-1][height-1];
 
-	for (auto neigh : endRoom->getNeighbours()){
+	for (auto &neigh : endRoom->getNeighbours()){
 		neigh.second.second->setEnemies(createEndEnemy());
 	}
 	std::vector<Enemy*> empty;
