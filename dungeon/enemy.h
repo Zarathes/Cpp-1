@@ -7,6 +7,8 @@ public:
 	std::string getDescription();
 	std::string getName();
 	void showStatistics();
+	void underAttack(int points);
+	bool living();
 	int attack();
 
 	void SetCommand(TYPES::ACTION_LIST command);

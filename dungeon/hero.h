@@ -1,12 +1,10 @@
 #ifndef __hero__
 #define __hero__
 
-
-#include <iostream>
+#include "character.h"
+#include "room.h"
 #include <vector>
 #include <stack>
-#include "Character.h"
-#include "Room.h"
 
 class Hero: public Character{
 public:
@@ -27,7 +25,9 @@ public:
 private:
 	int experiancePoints;
 	int perceptionPoints;
-	bool alive;
+	int level;
+
+	void checkLevel();
 	std::vector<Consumable*> consumable;
 	std::vector<Equipable*> equipment;
 	std::stack<Room*> rooms;

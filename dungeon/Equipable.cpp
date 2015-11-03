@@ -23,3 +23,7 @@ std::string Equipable::getName(){
 std::string Equipable::getDescription(){
 	return description;
 }
+
+int Equipable::use(){
+	return points;
+}

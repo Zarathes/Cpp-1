@@ -18,6 +18,7 @@ using std::out_of_range;
 Hero::Hero() : Character("Hero"){
 	rooms = std::stack<Room*>();
 	lifePoints = 250;
+	level = 0;
 	alive = true;
 }
 
@@ -34,6 +35,7 @@ Room* Hero::getCurrentRoom(){
 void Hero::showStatistics(){
 	cout << "Hero statistics " << endl;
 	cout << "Live points: " << lifePoints << endl;
+	cout << "Level: " << level << endl;
 	cout << "Experiance points: " << experiancePoints << endl;
 	cout << "Perception points: " << perceptionPoints << endl;
 	cout << "" << endl;
@@ -132,7 +134,33 @@ bool Hero::living(){
 }
 
 void Hero::fight(){
+	int current = 1;
+
 	cout << "Choose a action :" << endl;
+	
+	for (int i = 0; i < consumable.size(); i++)
+	{
+		if (current == consumable.size()) {
+			cout << current << ": " << consumable[i]->getName() << endl;
+		}
+		else {
+			cout << current << ": " << consumable[i]->getName() << " | ";
+		}
+
+		current++;
+	}
+
+	for (int i = 0; i < equipment.size(); i++)
+	{
+		if (current == consumable.size()) {
+			cout << current << ": " << equipment[i]->getName() << endl;
+		}
+		else {
+			cout << current << ": " << equipment[i]->getName() << " | ";
+		}
+
+		current++;
+	}
 
 	string input;
 	int command;
@@ -141,18 +169,28 @@ void Hero::fight(){
 	std::string::size_type rest;
 	try {
 		command = std::stoi(input, &rest);
-/*		if (consumable.find((consumable)command) != consumable.end()) {
-			for (auto const& a : consumable)
-			{
-				if (a.first == command) {
-					currentRoom = a.second.second;
-					currentRoom->enteringRoom();
-				}
+		int totalLength = equipment.size() + consumable.size();
+		if (command > 0 && command <= totalLength) {
+			//als equipable
+			if (command > consumable.size()){
+				command -= 1;
+				command -= consumable.size();
+				experiancePoints +=	currentRoom->attackEnemies(equipment[command]->use());
+				checkLevel();
+			}
+			//consumable
+			else{
+				command -= 1;
+				lifePoints += consumable[command]->use();
+				delete consumable[command];
+				consumable.erase(consumable.begin()+command);
 			}
 		}
 		else {
 			throw invalid_argument("No valid Action");
-		}*/
+		}
+		underAttack(currentRoom->fight());
+		currentRoom->enteringRoom();
 	}
 	catch (const invalid_argument& ia) {
 		cout << "Invalid arguments: " << ia.what() << endl;
@@ -160,13 +198,10 @@ void Hero::fight(){
 	catch (const out_of_range& oor) {
 		cout << "Out of Range Error: " << oor.what() << endl;
 	}
+}
 
-	//hero attack
-
-	//laat alle enemies attacken
-	currentRoom->fight();
-	//kllaar
-
+void Hero::checkLevel(){
+	level = experiancePoints/10;
 }
 
 void Hero::run(){

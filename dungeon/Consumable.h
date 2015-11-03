@@ -7,6 +7,6 @@ public:
 	void setDescription(std::string descr);
 	std::string getName();
 	std::string getDescription();
-	void use();
+	int use();
 private:
 };

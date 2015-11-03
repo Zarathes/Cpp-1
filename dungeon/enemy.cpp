@@ -30,6 +30,17 @@ int Enemy::attack(){
 	return attackPower;
 }
 
+void Enemy::underAttack(int points){
+	lifePoints -= points;
+	if (lifePoints < 1){
+		alive = false;
+	}
+}
+
+bool Enemy::living(){
+	return alive;
+}
+
 void Enemy::SetCommand(TYPES::ACTION_LIST command){
 	currentCommand = command;
 }

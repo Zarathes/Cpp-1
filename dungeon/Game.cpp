@@ -74,6 +74,8 @@ void Game::start(){
 		//leef ik nog?
 		running = hero->living();
 	}
+	cout << endl;
+	cout << "you died" << endl;
 }
 
 void Game::printCommands()
@@ -118,7 +120,7 @@ void Game::handelCommand()
 				break;
 			case TYPES::ACTION_LIST::VIEW_MAP:
 				//should be roomcontroller.showmap
-				ViewMapCommand(hero->getCurrentRoom()).Execute();
+				//ViewMapCommand(hero->getCurrentRoom()).Execute();
 				break;
 			case TYPES::ACTION_LIST::VIEW_HERO:
 				ViewHeroCommand(hero).Execute();
