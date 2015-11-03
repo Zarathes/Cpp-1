@@ -39,7 +39,6 @@ public:
 
 	bool hasTrap();
 	Trap* getTrap();
-	void deleteTrap();
 
 	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();
 

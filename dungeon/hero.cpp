@@ -135,7 +135,6 @@ void Hero::handleTrap(){
 	Trap* trap = currentRoom->getTrap();
 	lifePoints -= trap->attack();
 	perceptionPoints += trap->getPerception();
-	currentRoom->deleteTrap();
 }
 
 bool Hero::living(){
