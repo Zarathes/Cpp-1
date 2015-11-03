@@ -70,6 +70,11 @@ void Room::setNeighbours(Exits exit, pair<string, Room*> room) {
 	neighbors[exit] = room;
 }
 
+
+map<Exits, pair<string, Room*>> Room::getNeighbours() {
+	return neighbors;
+}
+
 void Room::setEnemies(std::vector<Enemy*> newEnemies) {
 	enemies = newEnemies;
 }
@@ -143,72 +148,7 @@ void Room::Execute()
 			break;
 		case TYPES::ACTION_LIST::VIEW_HERO:
 			cout << "You are no hero." << endl;
-			break;
-		case TYPES::ACTION_LIST::CHANGE_ROOM:
-			handelRoomChange();
-			break;
-	}
-}
-
-int Room::inputNumber(string question) {
-	cout << question << endl;
-
-	string input;
-	int output;
-	getline(cin, input);
-
-	std::string::size_type rest;
-
-	try {
-		output = std::stoi(input, &rest);
-	}
-	catch (const invalid_argument& ia) {
-		cout << "Invalid arguments: " << ia.what() << endl;
-		return inputNumber(question);
-	}
-	catch (const out_of_range& oor) {
-		cout << "Out of Range Error: " << oor.what() << endl;
-		return inputNumber(question);
-	}
-
-	return output;
-}
-
-void Room::handelRoomChange()
-{
-	int current = 1;
-
-	int index = neighbors.size();
-	for (auto const& a : neighbors)
-	{
-		if (current == index) {
-			cout << a.first << ": " << a.second.first << endl;
-		}
-		else {
-			cout << a.first << ": " << a.second.first << " | ";
-		}
-
-		current++;
-	}
-
-	int command = inputNumber("Choose a direction:");
-
-	try {
-		if (neighbors.find((Exits)command) != neighbors.end()) {
-			for (auto const& a : neighbors)
-			{
-				if (a.first == command) {
-					//this = a.second.second;
-				}
-			}
-		}
-		else {
-			throw invalid_argument("No valid Action");
-		}
-	}
-	catch (const invalid_argument& ia) {
-		cout << "Invalid arguments: " << ia.what() << endl;
-		handelRoomChange();
+			break;		
 	}
 }
 

@@ -4,7 +4,6 @@
 using namespace std;
 
 ClearedRoomState::ClearedRoomState() {
-	cout << "Entering ClearedRoomState" << endl;
 }
 
 std::map<int, pair<TYPES::ACTION_LIST, string>> ClearedRoomState::getCommands() {

@@ -1,10 +1,19 @@
 #include "stdafx.h"
 #include "Hero.h"
+#include <iostream>
+#include <string>
+#include <map>
+
 using std::cout;
 using std::cin;
 using std::endl;
-#include <iostream>
-#include <string>
+using std::string;
+using std::map;
+using std::pair;
+
+//exceptions
+using std::invalid_argument;
+using std::out_of_range;
 
 Hero::Hero() : Character("Hero"){
 	rooms = std::stack<Room*>();
@@ -12,9 +21,10 @@ Hero::Hero() : Character("Hero"){
 	alive = true;
 }
 
-void Hero::insertCurrentRoom(Room *room){
+void Hero::insertCurrentRoom(Room *room){	
 	rooms.push(room);
 	currentRoom = room;
+	currentRoom->enteringRoom();
 }
 
 Room* Hero::getCurrentRoom(){
@@ -52,6 +62,56 @@ void Hero::showBag(){
 	}
 	
 	cout << "" << endl;
+}
+
+void Hero::handelRoomChange()
+{
+	int current = 1;
+
+	map<Exits, pair<string, Room*>> neighbors = currentRoom->getNeighbours();
+
+	int index = neighbors.size();
+	for (auto const& a : neighbors)
+	{
+		if (current == index) {
+			cout << a.first << ": " << a.second.first << endl;
+		}
+		else {
+			cout << a.first << ": " << a.second.first << " | ";
+		}
+
+		current++;
+	}
+
+
+	cout << "Choose a direction :" << endl;
+
+	string input;
+	int command;
+	getline(cin, input);
+
+	std::string::size_type rest;
+	try {
+		command = std::stoi(input, &rest);
+		if (neighbors.find((Exits)command) != neighbors.end()) {
+			for (auto const& a : neighbors)
+			{
+				if (a.first == command) {
+					currentRoom = a.second.second;
+					currentRoom->enteringRoom();
+				}
+			}
+		}
+		else {
+			throw invalid_argument("No valid Action");
+		}
+	}
+	catch (const invalid_argument& ia) {
+		cout << "Invalid arguments: " << ia.what() << endl;
+	}
+	catch (const out_of_range& oor) {
+		cout << "Out of Range Error: " << oor.what() << endl;
+	}
 }
 
 void Hero::SetCommand(TYPES::ACTION_LIST command){
@@ -100,6 +160,9 @@ void Hero::Execute(){
 		break;
 	case TYPES::ACTION_LIST::GET_ITEMS:
 		getItems();
+		break; 
+	case TYPES::ACTION_LIST::CHANGE_ROOM:
+		handelRoomChange();
 		break;
 	}
 }

@@ -21,8 +21,6 @@ private:
 
 	Hero *hero;
 
-	Room *currentRoom;
-
 	std::map<int , std::pair<TYPES::ACTION_LIST, std::string>> commands;
 	void printCommands();
 	void handelCommand();

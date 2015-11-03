@@ -18,9 +18,6 @@
 class Room : public Client, public Reciever {
 public:	
 	Room();
-	
-	int inputNumber(std::string question);
-	void handelRoomChange();
 
 	void setDescription(std::string newDescr);
 	void printDescription();
@@ -31,6 +28,7 @@ public:
 	void setItems(std::vector<Item*> newItems);
 	std::vector<Item*> getItems();
 	Room* getNeighbour(Exits exit);
+	std::map<Exits, std::pair<std::string, Room*>> getNeighbours();
 
 	void fight();
 
