@@ -155,6 +155,7 @@
     <Text Include="config\roomType.txt" />
     <Text Include="config\size.txt" />
     <Text Include="config\state.txt" />
+    <Text Include="config\trapName.txt" />
     <Text Include="lifePoints.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
