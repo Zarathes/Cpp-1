@@ -82,9 +82,15 @@ void Hero::run(){
 
 void Hero::getItems(){
 	//get items en doe ze in bag
-	for (auto item : currentRoom->getItems()){
+	/*for (auto item : currentRoom->getItems()){
+		//if (item == Consumable){
+	//		consumable.push_back(item);
+	//	}else if (item == Equipable){
+		//	equipment.push_back(item);
+	//	}
+
 		cout << "Added " << item->getName() << " to your bag" << endl;
-	}
+	}*/
 }
 
 void Hero::Execute(){

@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "Generator.h"
 #include "Stairs.h"
-#include "Equipable.h"
-#include "Consumable.h"
+
 
 using std::cout;
 using std::cin;
@@ -49,7 +48,8 @@ bool Generator::createDungeon(){
 			for (auto &c : b) {
 				c.setDescription(createDescription());
 			//	c.setEnemies(createEnemies());
-				c.setItems(createItems());
+				c.setConsumableItems(createConsumableItems());
+				c.setEquipableItems(createEquipableItems());
 			}
 		}
 	}
@@ -173,19 +173,24 @@ vector<Enemy*> Generator::createEnemies() {
 	return infestation;
 }
 
-vector<Item*> Generator::createItems() {
-	vector<Item*> infestation;
+vector<Consumable*> Generator::createConsumableItems() {
+	vector<Consumable*> infestation;
 
 	int randNumCons = rand() % (2 - -1 + 1) + -1;
-	int randNumEq = rand() % (2 - -1 + 1) + -1;
-
+	
 	for (int i = 0; i < randNumCons; i++) {
 		string consumable = read.randomNize(consumbableNames);
 		string pointsString = read.randomNize(attackPointsItem);
 		int attackPoints = atoi(pointsString.c_str());
 
 		infestation.push_back(new Consumable(consumable, attackPoints));
-	}
+	}	
+	return infestation;
+}
+
+vector<Equipable*> Generator::createEquipableItems(){
+	vector<Equipable*> infestation;
+	int randNumEq = rand() % (2 - -1 + 1) + -1;
 
 	for (int i = 0; i < randNumEq; i++) {
 
@@ -195,9 +200,10 @@ vector<Item*> Generator::createItems() {
 
 		infestation.push_back(new Equipable(equipable, attackPoints));
 	}
-
 	return infestation;
 }
+
+
 
 Room* Generator::getStartRoom() {
 	return startRoom;

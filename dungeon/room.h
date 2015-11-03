@@ -11,7 +11,8 @@
 #include "Reciever.h"
 
 #include "Enemy.h"
-#include "Item.h"
+#include "Consumable.h"
+#include "Equipable.h"
 #include "Trap.h"
 #include "Exits.cpp"
 
@@ -28,8 +29,10 @@ public:
 	void setNeighbours(Exits exit, std::pair<std::string, Room*> room);
 	void setEnemies(std::vector<Enemy*> newEnemies);
 	void deleteEnemy(Enemy enemy);
-	void setItems(std::vector<Item*> newItems);
-	std::vector<Item*> getItems();
+	void setEquipableItems(std::vector<Equipable*> newItems);
+	void setConsumableItems(std::vector<Consumable*> newItems);
+	std::vector<Equipable*> getEquipableItems();
+	std::vector<Consumable*> getConsumableItems();
 	Room* getNeighbour(Exits exit);
 
 	void fight();
@@ -50,7 +53,8 @@ private:
 	std::string description;
 	std::map<Exits, std::pair<std::string, Room*>> neighbors;
 	std::vector<Enemy*> enemies;
-	std::vector<Item*> items;
+	std::vector<Equipable*> equipableItems;
+	std::vector<Consumable*> consumableItems;
 	Trap trap;
 
 	TYPES::ACTION_LIST currentCommand;

@@ -25,15 +25,26 @@ void Room::enteringRoom(){
 	if (enemies.empty()){
 		currentState = new ClearedRoomState();
 		printDescription();
-		if (items.empty()){
-			cout << "No items" << endl;
+		if (consumableItems.empty()){
+			cout << "No consumable items" << endl;
 		}
 		else{
-			cout << "The room has the following items: " << endl;
-			for (auto item : items){
+			cout << "The room has the following consumable items: " << endl;
+			for (auto item : consumableItems){
 				cout << item->getName() << endl;
 			}
 		}
+
+		if (equipableItems.empty()){
+			cout << "No equipable items" << endl;
+		}
+		else{
+			cout << "The room has the following equipable items: " << endl;
+			for (auto item : equipableItems){
+				cout << item->getName() << endl;
+			}
+		}
+
 		cout << "This room has an exit to:" << endl;
 		std::map<Exits, std::pair<std::string, Room*>>::iterator temp = neighbors.begin();
 
@@ -78,12 +89,20 @@ void Room::deleteEnemy(Enemy enemy) {
 	//enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
 }
 
-void Room::setItems(std::vector<Item*> newItems) {
-	items = newItems;
+void Room::setEquipableItems(std::vector<Equipable*> newItems) {
+	equipableItems = newItems;
 }
 
-std::vector<Item*> Room::getItems(){
-	return items;
+void Room::setConsumableItems(std::vector<Consumable*> newItems) {
+	consumableItems = newItems;
+}
+
+std::vector<Equipable*> Room::getEquipableItems(){
+	return equipableItems;
+}
+
+std::vector<Consumable*> Room::getConsumableItems(){
+	return consumableItems;
 }
 
 
