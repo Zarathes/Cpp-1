@@ -71,6 +71,7 @@ void Game::start(){
 	while (running) {
 		commands = hero->getCurrentRoom()->getCommands();
 		handelCommand();
+		//leef ik nog?
 		running = hero->living();
 	}
 }
@@ -104,7 +105,7 @@ void Game::handelCommand()
 
 			switch (commands[command].first) {
 			case TYPES::ACTION_LIST::FIGHT:
-				FightCommand(hero->getCurrentRoom()).Execute();
+				FightCommand(hero).Execute();
 				break;
 			case TYPES::ACTION_LIST::RUN:
 				RunCommand(hero).Execute();

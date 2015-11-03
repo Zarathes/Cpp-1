@@ -110,14 +110,9 @@ bool Room::isVisited() {
 void Room::fight(){
 	//hero attack
 	//enemy attacks
-	//new menu for choosing
 
 	for (int i = 0; i < enemies.size(); i++){
 		//int x = enemies[i].attack();
-	}
-
-	if (enemies.empty()){
-		currentState->goNext(this);
 	}
 }
 

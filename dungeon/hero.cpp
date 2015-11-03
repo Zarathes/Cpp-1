@@ -98,7 +98,7 @@ void Hero::handelRoomChange()
 			for (auto const& a : neighbors)
 			{
 				if (a.first == command) {
-					currentRoom = a.second.second;
+					insertCurrentRoom(a.second.second);
 					currentRoom->enteringRoom();
 				}
 			}
@@ -131,10 +131,49 @@ bool Hero::living(){
 	return alive;
 }
 
+void Hero::fight(){
+	cout << "Choose a action :" << endl;
+
+	string input;
+	int command;
+	getline(cin, input);
+
+	std::string::size_type rest;
+	try {
+		command = std::stoi(input, &rest);
+/*		if (consumable.find((consumable)command) != consumable.end()) {
+			for (auto const& a : consumable)
+			{
+				if (a.first == command) {
+					currentRoom = a.second.second;
+					currentRoom->enteringRoom();
+				}
+			}
+		}
+		else {
+			throw invalid_argument("No valid Action");
+		}*/
+	}
+	catch (const invalid_argument& ia) {
+		cout << "Invalid arguments: " << ia.what() << endl;
+	}
+	catch (const out_of_range& oor) {
+		cout << "Out of Range Error: " << oor.what() << endl;
+	}
+
+	//hero attack
+
+	//laat alle enemies attacken
+	currentRoom->fight();
+	//kllaar
+
+}
+
 void Hero::run(){
 	if (rooms.size() > 1){
 		rooms.pop();
-		currentRoom = rooms.top();		
+		currentRoom = rooms.top();	
+		currentRoom->enteringRoom();
 	}
 	else{
 		cout << "No room to run in" << endl;
@@ -183,6 +222,9 @@ void Hero::Execute(){
 		break; 
 	case TYPES::ACTION_LIST::CHANGE_ROOM:
 		handelRoomChange();
+		break;
+	case TYPES::ACTION_LIST::FIGHT:
+		fight();
 		break;
 	}
 }

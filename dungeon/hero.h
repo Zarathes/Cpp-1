@@ -31,6 +31,7 @@ private:
 	std::vector<Consumable*> consumable;
 	std::vector<Equipable*> equipment;
 	std::stack<Room*> rooms;
+	void fight();
 
 	void getItems();
 	Room *currentRoom;
