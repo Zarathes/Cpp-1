@@ -18,7 +18,7 @@ void Room::printDescription(){
 	cout << description << endl;
 }
 
-void Room::setNeighbours(Exits exit, Room room) {
+void Room::setNeighbours(Exits exit, pair<string,Room*> room) {
 	neighbors[exit] = room;
 }
 
@@ -34,8 +34,8 @@ void Room::setItems(std::vector<Item> newItems) {
 	items = newItems;
 }
 
-Room Room::getExit(Exits exit) {
-	return neighbors[exit];
+Room* Room::getNeighbour(Exits exit) {
+	return neighbors[exit].second;
 }
 
 bool Room::isVisited() {
@@ -78,9 +78,33 @@ void Room::Execute()
 			cout << "You are no hero." << endl;
 			break;
 		case TYPES::ACTION_LIST::CHANGE_ROOM:
-			cout << "You can't do that right now." << endl;
+			handelRoomChange();
 			break;
 	}
+}
+
+int Room::inputNumber(string question) {
+	cout << question << endl;
+
+	string input;
+	int output;
+	getline(cin, input);
+
+	std::string::size_type rest;
+
+	try {
+		output = std::stoi(input, &rest);
+	}
+	catch (const invalid_argument& ia) {
+		cout << "Invalid arguments: " << ia.what() << endl;
+		return inputNumber(question);
+	}
+	catch (const out_of_range& oor) {
+		cout << "Out of Range Error: " << oor.what() << endl;
+		return inputNumber(question);
+	}
+
+	return output;
 }
 
 Room::~Room() {

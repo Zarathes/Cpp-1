@@ -14,11 +14,14 @@ using std::string;
 #include <cmath>
 #include <sstream>
 #include <cstdio>
+#include <list>
 
 #include "Exits.h"
 
 
-Generator::Generator() {
+Generator::Generator(int d, int w, int h) 
+	: dungeon(depth, vector<vector<Room>>(width, vector<Room>(height, Room()))), depth(d), width(w), height(h)
+{
 	read = *new ReadTextFile();
 	size = read.readFile("config/size.txt");
 	roomType = read.readFile("config/roomType.txt");
@@ -28,27 +31,18 @@ Generator::Generator() {
 	enemies = read.readFile("config/enemies.txt");
 }
 
-bool Generator::createDungeon(int depth, int width, int height){
-	level = depth;	
-	width = width;
-	height = height;	
-
-	vector< vector< vector<Room*> > > dungeon(depth, vector<vector<Room*>>(width, vector<Room*>(height, new Room())));
-
+bool Generator::createDungeon(){
 	//depth
 	for (auto &a : dungeon) {
 		// width
 		for (auto &b : a) {
 			// height
 			for (auto &c : b) {
-				Room *temp = (Room*)c;
-				temp->setDescription(createDescription());
-				temp->setEnemies(createEnemies());
+				c.setDescription(createDescription());
+				c.setEnemies(createEnemies());
 			}
 		}
 	}
-
-	startRoom = dungeon[0][0][0];
 
 	//Corridors
 	//depth
@@ -59,14 +53,75 @@ bool Generator::createDungeon(int depth, int width, int height){
 		{
 			//height
 			for (size_t x = 0; x < dungeon[z][y].size(); x++)
-			{
-				Room *temp = dungeon[z][y][x];
+			{				 
+				Room *current = &dungeon[z][y][x];
+				vector<Exits> exits = createExit(y, x);
+				for (Exits i : exits) {
+					Room *neighbor;
+					switch (i) {
+					case Exits::NORTH:
+						neighbor = &dungeon[z][y][x-1];
 
+						current->setNeighbours(Exits::NORTH, std::pair<string, Room*> ("North", neighbor));
+						neighbor->setNeighbours(Exits::SOUTH, std::pair<string, Room*>("South", current));
+						break;					
+					case Exits::EAST:
+						neighbor = &dungeon[z][y+1][x];
+
+						current->setNeighbours(Exits::EAST, std::pair<string, Room*>("East", neighbor));
+						neighbor->setNeighbours(Exits::WEST, std::pair<string, Room*>("West", current));
+						break;					
+					case Exits::SOUTH:
+						neighbor = &dungeon[z][y][x + 1];
+
+						current->setNeighbours(Exits::SOUTH, std::pair<string, Room*>("South", neighbor));
+						neighbor->setNeighbours(Exits::NORTH, std::pair<string, Room*>("North", current));
+						break;				
+					case Exits::WEST:
+						neighbor = &dungeon[z][y - 1][x];
+
+						current->setNeighbours(Exits::WEST, std::pair<string, Room*>("West", neighbor));
+						neighbor->setNeighbours(Exits::EAST, std::pair<string, Room*>("East", current));
+						break;
+					}
+				}
 			}
 		}
 	}
+	
+	startRoom = &dungeon[0][0][0];
 
 	return true;
+}
+
+vector<Exits> Generator::createExit(int y, int x) {
+	std::vector<Exits> possibleExits;
+	std::vector<Exits> actiualExits;
+
+	if (x > 0) {
+		possibleExits.push_back(Exits::NORTH);
+	}
+	if (x < height-1) {
+		possibleExits.push_back(Exits::SOUTH);
+	}
+	if (y > 0) {
+		possibleExits.push_back(Exits::WEST);
+	}
+	if (y < width - 1) {
+		possibleExits.push_back(Exits::EAST);
+	}
+
+	int randNum = 1 + (rand() % (int)(possibleExits.size() - 1 + 1));
+
+	for (int i = 0; i < randNum; i++) {
+		int randExit = 0 + (rand() % (int)(possibleExits.size()-1 - 0 + 1));
+
+		actiualExits.push_back(possibleExits[randExit]);
+
+		possibleExits.erase(possibleExits.begin() + randExit);
+	}
+	
+	return actiualExits;
 }
 
 string Generator::createDescription(){
@@ -78,11 +133,13 @@ string Generator::createDescription(){
 
 //	cout << "Make description" << endl;
 	string descr = "Description: ";
-	descr += "You Are in a " + sizeInput + " " + roomInput + ". ";
+	descr += "You are in a " + sizeInput + " " + roomInput + ". ";
 	descr += "The "+ roomInput +" has " + furnitureInput +". ";
 	descr += "The room is " + stateInput +" and " + lightningInput + ".";
 	
 //	cout << descr << endl;
+
+
 
 	return descr;
 }
@@ -98,74 +155,6 @@ vector<Enemy*> Generator::createEnemies() {
 	}
 
 	return infestation;
-}
-
-int Generator::connect(int currentLevel){
-	for (int currentWidth = 1; currentWidth <= width; currentWidth++){
-		if (currentWidth != width){
-			rooms[currentLevel][currentWidth]->setNeighbours(EAST, *rooms[currentLevel][currentWidth + 1]);
-		}
-		if (currentWidth > 1){
-			rooms[currentLevel][currentWidth]->setNeighbours(WEST, *rooms[currentLevel][currentWidth - 1]);
-		}
-	}
-	if (currentLevel > 1){
-	/*	int stairsUpRandom = rand() % width;
-		int stairsDownRandom = rand() % width;
-		while (stairsDownRandom == stairsUpRandom){
-			stairsDownRandom = rand() % width;
-		}
-
-		Stairs stairsUp = Stairs();
-		Stairs stairsDown = Stairs();
-		
-
-		rooms[currentLevel][stairsUpRandom]->setNeighbours(NORTH, stairsUp);
-		rooms[currentLevel-1][stairsDownRandom]->setNeighbours(SOUTH,  stairsDown);*/
-		//bepaal random getal bij width
-		//zet daar trapup
-		//bepaal new randomgetal die niet hetzelfde is als strapup
-		//doe trapdown
-		//en doe currentlevel+1
-	}
-	else{
-		int randomIndex = rand() % width;
-		startRoom = rooms[currentLevel][randomIndex];
-	}
-
-	return currentLevel;
-}
-
-void Generator::showMap(){
-	for (int currentLevel = mapLevel; currentLevel > 0; currentLevel--){
-		for (int currentWidth = 1; currentWidth <= width; currentWidth++){
-			Room *currentRoom = rooms[currentLevel][currentWidth];
-
-		/*	if (&currentRoom->getExit(WEST) != nullptr){
-				printf(" - ");
-			}
-			else{
-				printf("   ");
-			}*/
-
-
-			if (currentRoom == startRoom){				
-				printf("   s   ");				
-			}else if (currentRoom->isVisited()){
-				printf("   r   ");
-			}else{
-				printf("   .   ");
-			}
-
-		/*	if (&currentRoom->getExit(EAST) != nullptr){
-				printf(" - ");
-			}
-			else{
-				printf("   ");
-			}*/
-		}
-		cout<< ""<< endl;
-	}
 }
 
 Room* Generator::getStartRoom() {

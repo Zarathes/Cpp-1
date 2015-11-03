@@ -7,10 +7,9 @@
 
 class Generator{
 public:
-	Generator();
-	bool createDungeon(int levels, int width, int height);
+	Generator(int d, int w, int h);
+	bool createDungeon();
 	Room* getStartRoom();
-	void showMap();
 private:
 	std::vector<std::string> size;
 	std::vector<std::string> roomType;
@@ -19,15 +18,17 @@ private:
 	std::vector<std::string> lightning;
 	std::vector<std::string> enemies;
 
-	int level;
 	int mapLevel;
+
+	int depth;
 	int width;
 	int height;
+
 	Room* startRoom;
 	ReadTextFile read;
 	
-	Room *rooms[1000][1000];
+	std::vector< std::vector< std::vector<Room> > > dungeon;
 	std::string createDescription();
 	std::vector<Enemy*> createEnemies();
-	int connect(int currentLevel);
+	std::vector<Exits> createExit(int width, int height);
 };

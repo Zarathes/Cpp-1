@@ -18,14 +18,17 @@
 class Room : public Client, public Reciever {
 public:	
 	Room();
+	
+	int inputNumber(std::string question);
+	void handelRoomChange();
 
 	void setDescription(std::string newDescr);
 	void printDescription();
-	void setNeighbours(Exits exit, Room room);
+	void setNeighbours(Exits exit, std::pair<std::string, Room*> room);
 	void setEnemies(std::vector<Enemy*> newEnemies);
 	void deleteEnemy(Enemy enemy);
 	void setItems(std::vector<Item> newItems);
-	Room getExit(Exits exit);
+	Room* getNeighbour(Exits exit);
 
 	bool isVisited();
 
@@ -41,7 +44,7 @@ private:
 	bool visited = true;
 
 	std::string description;
-	std::map<Exits, Room> neighbors;
+	std::map<Exits, std::pair<std::string, Room*>> neighbors;
 	std::vector<Enemy*> enemies;
 	std::vector<Item> items;
 	Trap trap;
