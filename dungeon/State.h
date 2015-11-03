@@ -13,6 +13,8 @@ class State{
 		virtual void goNext(Client* context) { std::cout << "Client::goNext undefined"; };
 		virtual std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands() =0;
 		virtual ~State(){};
+
+		virtual const char* classname() { return "State"; }
 };
 
 #endif

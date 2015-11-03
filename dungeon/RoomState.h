@@ -12,6 +12,8 @@ class RoomState : public State
 public:
 	virtual std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands() = 0;
 	virtual void goNext(Client* context) { std::cout << "RoomState::goNext undefined"; };
+
+	virtual const char* classname() { return "RoomState"; }
 };
 
 #endif

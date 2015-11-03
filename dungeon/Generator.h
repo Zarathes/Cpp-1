@@ -10,6 +10,7 @@ public:
 	bool createDungeon();
 	Room* getStartRoom();
 	Room* getEndRoom();
+	void showMap(int CurrentLevel);
 private:
 	std::vector<std::string> size;
 	std::vector<std::string> roomType;

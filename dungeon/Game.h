@@ -5,6 +5,7 @@
 
 #include "Room.h"
 #include "hero.h"
+#include "Generator.h"
 
 class Game
 {
@@ -23,7 +24,9 @@ private:
 
 	std::map<int , std::pair<TYPES::ACTION_LIST, std::string>> commands;
 	void printCommands();
-	void handelCommand();
+	void handelCommand(); 
+	
+	Generator *dungenGenerator;
 };
 
 #endif

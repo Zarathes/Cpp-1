@@ -9,6 +9,7 @@ public:
 
 	std::map<int, std::pair<TYPES::ACTION_LIST, std::string>> getCommands();
 
+	const char* classname() { return "ClearedRoomState"; }
 	~ClearedRoomState();
 };
 

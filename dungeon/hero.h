@@ -9,8 +9,7 @@
 class Hero: public Character{
 public:
 	Hero();
-
-
+	
 	void handelRoomChange();
 	void insertCurrentRoom(Room *room);
 	Room* getCurrentRoom();
@@ -19,7 +18,6 @@ public:
 	void underAttack(int points);
 	void run();
 	bool living();
-
 	void SetCommand(TYPES::ACTION_LIST command);
 	void Execute();
 private:
@@ -32,6 +30,8 @@ private:
 	std::vector<Equipable*> equipment;
 	std::stack<Room*> rooms;
 	void fight();
+
+	int currentLevel;
 
 	void getItems();
 	Room *currentRoom;

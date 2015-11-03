@@ -13,5 +13,9 @@ void Client::setState(State *s){
 	currentState = s;
 }
 
+State* Client::getState(){
+	return currentState;
+}
+
 Client::~Client(){
 }

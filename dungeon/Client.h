@@ -11,6 +11,7 @@ class Client{
 
 		void goNext();
 		void setState(State *newState);
+		State* getState();
 	
 		virtual ~Client();
 };
