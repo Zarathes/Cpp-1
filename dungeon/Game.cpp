@@ -54,13 +54,13 @@ int Game::inputNumber(string question) {
 }
 
 bool Game::generateDungeon() {
-	Generator *dungenGenerator = new Generator();
 
 	int levels = inputNumber("How many levels should the dungeon have?");
 	int width = inputNumber("What should the dungeon width be?");
 	int height = inputNumber("What should the dungeon height be?");
 
-	if (dungenGenerator->createDungeon(levels, width, height)) {
+	Generator *dungenGenerator = new Generator(levels, width, height);
+	if (dungenGenerator->createDungeon()) {
 		currentRoom = dungenGenerator->getStartRoom();
 		hero->insertCurrentRoom(currentRoom);
 		return true;
@@ -98,7 +98,7 @@ void Game::printCommands()
 void Game::handelCommand()
 {
 	printCommands();
-	int command = inputNumber("Choose a command: \n\r");
+	int command = inputNumber("Choose a command:");
 
 	try {
 		if (commands.find(command) != commands.end()) {

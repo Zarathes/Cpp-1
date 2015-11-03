@@ -20,6 +20,7 @@ void Room::printDescription(){
 	cout << description << endl;
 }
 
+<<<<<<< HEAD
 void Room::enteringRoom(){
 	
 	if (enemies.empty()){
@@ -62,6 +63,10 @@ void Room::enteringRoom(){
 	}
 }
 
+void Room::setNeighbours(Exits exit, Room room) {
+=======
+void Room::setNeighbours(Exits exit, pair<string,Room*> room) {
+>>>>>>> cafb5a4d07f61b6747ab4245140854222de02221
 	neighbors[exit] = room;
 }
 
