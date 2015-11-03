@@ -131,7 +131,7 @@ int Room::attackEnemies(int attackPoints){
 			//delete enemie
 			delete enemies[i];
 			enemies.erase(enemies.begin()+i);
-			experiencepoints += 10;
+			experiencepoints += 5;
 		}
 	}
 	return experiencepoints;

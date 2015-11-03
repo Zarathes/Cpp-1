@@ -25,6 +25,9 @@ public:
 private:
 	int experiancePoints;
 	int perceptionPoints;
+	int level;
+
+	void checkLevel();
 	std::vector<Consumable*> consumable;
 	std::vector<Equipable*> equipment;
 	std::stack<Room*> rooms;

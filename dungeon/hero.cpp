@@ -18,6 +18,7 @@ using std::out_of_range;
 Hero::Hero() : Character("Hero"){
 	rooms = std::stack<Room*>();
 	lifePoints = 250;
+	level = 0;
 	alive = true;
 }
 
@@ -34,6 +35,7 @@ Room* Hero::getCurrentRoom(){
 void Hero::showStatistics(){
 	cout << "Hero statistics " << endl;
 	cout << "Live points: " << lifePoints << endl;
+	cout << "Level: " << level << endl;
 	cout << "Experiance points: " << experiancePoints << endl;
 	cout << "Perception points: " << perceptionPoints << endl;
 	cout << "" << endl;
@@ -173,6 +175,7 @@ void Hero::fight(){
 				command -= 1;
 				command -= consumable.size();
 				experiancePoints +=	currentRoom->attackEnemies(equipment[command]->use());
+				checkLevel();
 			}
 			//consumable
 			else{
@@ -194,6 +197,10 @@ void Hero::fight(){
 	catch (const out_of_range& oor) {
 		cout << "Out of Range Error: " << oor.what() << endl;
 	}
+}
+
+void Hero::checkLevel(){
+	level = experiancePoints/10;
 }
 
 void Hero::run(){
