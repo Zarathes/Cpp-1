@@ -38,6 +38,9 @@ Generator::Generator(int d, int w, int h)
 	equipableNames = read.readFile("config/EquipableNames.txt");
 	consumbableNames = read.readFile("config/ConsumableNames.txt");
 	attackPointsItem = read.readFile("config/itemPoints.txt");
+
+	traps = read.readFile("config/TrapNames.txt");
+	trapDescription = read.readFile("config/TrapDescription.txt");
 }
 
 bool Generator::createDungeon(){
@@ -51,6 +54,7 @@ bool Generator::createDungeon(){
 				c.setEnemies(createEnemies());
 				c.setConsumableItems(createConsumableItems());
 				c.setEquipableItems(createEquipableItems());
+				c.setTrap(createTrap());
 			}
 		}
 	}
@@ -101,8 +105,6 @@ bool Generator::createDungeon(){
 		}
 	}
 
-	startRoom = &dungeon[0][0][0];
-
 	//Stairs
 	if (dungeon.size() > 1) {
 		for (size_t z = 0; z < dungeon.size(); z++)
@@ -145,6 +147,7 @@ bool Generator::createDungeon(){
 
 	startRoom = &dungeon[0][randomStartY][randomStartX];
 	startRoom->setEnemies(empty);
+	startRoom->setTrap(nullptr);
 
 	return true;
 }
@@ -166,7 +169,7 @@ vector<Exits> Generator::createExit(int y, int x) {
 		possibleExits.push_back(Exits::EAST);
 	}
 
-	int randNum = 1 + (rand() % (int)(possibleExits.size() - 2 + 1));
+	int randNum = 1 + (rand() % (int)(possibleExits.size()));
 
 	for (int i = 0; i < randNum; i++) {
 		int randExit = 0 + (rand() % (int)(possibleExits.size()-1 - 0 + 1));
@@ -259,6 +262,22 @@ vector<Equipable*> Generator::createEquipableItems(){
 		infestation.push_back(new Equipable(equipable, attackPoints));
 	}
 	return infestation;
+}
+
+Trap* Generator::createTrap() {
+	int randNum = rand() % 5;
+
+	if (randNum == 0) {
+		string trapNameInput = read.randomNize(traps);
+		string attackPointsString = read.randomNize(attackPointsEnemy);
+		string perceptionPointsString = read.randomNize(attackPointsItem);
+
+		string trapDescription = "Description: ";
+		trapDescription += "You triggered a " + trapNameInput + " and were hit for " + attackPointsString + " damage.";
+		return new Trap(trapNameInput, trapDescription, atoi(attackPointsString.c_str()), atoi(perceptionPointsString.c_str()));
+	}
+
+	return nullptr;
 }
 
 void Generator::showMap(int currentDepth) {

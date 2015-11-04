@@ -62,6 +62,22 @@ void Room::enteringRoom(){
 	}
 }
 
+int Room::triggerTrap(int perception) {
+	if (trap != nullptr) {
+		if (perception > trap->getPerceptionLevel()) {
+			cout << "You spotted a " << trap->getName() << " trap and disarmed it." << endl;
+			delete trap;
+			return 0;
+		}
+		else {
+			return trap->getAttackPower();
+		}
+	}
+	else {
+		return 0;
+	}
+}
+
 void Room::setNeighbours(Exits exit, pair<string, Room*> room) {
 	neighbors[exit] = room;
 }
@@ -172,6 +188,10 @@ int Room::getDepth() {
 
 void Room::setDepth(int d) {
 	 depth = d;
+}
+
+void Room::setTrap(Trap* t) {
+	trap = t;
 }
 
 
