@@ -101,6 +101,8 @@ bool Generator::createDungeon(){
 		}
 	}
 
+	startRoom = &dungeon[0][0][0];
+
 	//Stairs
 	if (dungeon.size() > 1) {
 		for (size_t z = 0; z < dungeon.size(); z++)
@@ -113,6 +115,13 @@ bool Generator::createDungeon(){
 
 
 				Room *current = &dungeon[z][randomWidthUp][randomHeightUp];
+
+				while (current == startRoom){
+					randomWidthUp = rand() % (height - 1 + 1) + 0;
+					randomHeightUp = rand() % (width - 1 + 1) + 0;
+					current = &dungeon[z][randomWidthUp][randomHeightUp];
+				}
+
 				Room *neighbor = &dungeon[z+1][randomWidthDown][randomHeightDown];
 				current->setNeighbours(Exits::UP, std::pair<string, Room*>("Up", neighbor));
 				neighbor->setNeighbours(Exits::DOWN, std::pair<string, Room*>("Down", current));
@@ -299,7 +308,6 @@ void Generator::showMap(int currentDepth) {
 						break;
 					default:
 						break;
-
 					}
 				}
 			}
