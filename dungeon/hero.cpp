@@ -188,7 +188,10 @@ void Hero::fight(){
 				delete consumable[command];
 				consumable.erase(consumable.begin()+command);
 			}
-			underAttack(currentRoom->fight());
+			int damage = currentRoom->fight();
+			cout << "The enemies attacked you, youre damage is " << damage << endl;
+			underAttack(damage);
+			cout << endl;
 			currentRoom->enteringRoom();
 		}
 		else {
@@ -223,6 +226,7 @@ void Hero::getItems() {
 	//get items en doe ze in bag
 	if (currentRoom->getConsumableItems().empty() && currentRoom->getEquipableItems().empty()) {
 		cout << "No items to get" << endl;
+		cout << endl;
 		currentRoom->enteringRoom();
 	}
 	else {

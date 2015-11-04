@@ -49,9 +49,11 @@ void Room::enteringRoom(){
 		std::map<Exits, std::pair<std::string, Room*>>::iterator temp = neighbors.begin();
 
 		while (temp != neighbors.end()){
-			cout << temp->second.first << endl;			
+			cout << temp->second.first << "   ";			
 			++temp;
 		}
+		cout << endl;
+		cout << endl;
 	}
 	else{
 		currentState = new InfestedRoomState();
