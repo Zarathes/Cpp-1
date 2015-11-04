@@ -17,6 +17,7 @@ using std::out_of_range;
 
 Hero::Hero() : Character("Hero"){
 	rooms = std::stack<Room*>();
+	equipment.push_back(new Equipable("fist",5));
 	lifePoints = 250;
 	level = 0;
 	alive = true;
