@@ -5,8 +5,11 @@
 
 class Trap {
 public:
+	Trap(std::string name, std::string descr, int attackPower, int counterPerception);
 	std::string getName();
 	std::string getDescription();
+	int getPerceptionLevel();
+	int getAttackPower();
 private:
 	std::string name;
 	std::string description;

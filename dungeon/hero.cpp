@@ -27,6 +27,8 @@ void Hero::insertCurrentRoom(Room *room){
 	rooms.push(room);
 	currentRoom = room;
 	currentRoom->enteringRoom();
+
+	underAttack(currentRoom->triggerTrap(perceptionPoints));
 }
 
 Room* Hero::getCurrentRoom(){
