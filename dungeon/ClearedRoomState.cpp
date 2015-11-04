@@ -15,7 +15,7 @@ std::map<int, pair<TYPES::ACTION_LIST, string>> ClearedRoomState::getCommands() 
 	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(5, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::VIEW_HERO, "View Hero")));
 	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(6, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::CHANGE_ROOM, "Change Room")));
 	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(7, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::TALISMAN, "Use Talisman")));
-	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(8, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::COMPASS, "Use Talisman")));
+	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(8, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::COMPASS, "Compass")));
 	return commands;
 }
 

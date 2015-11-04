@@ -19,13 +19,12 @@ void ZilverenCompass::use(Room* currentRoom){
 	int enemies = 0;
 	std::vector<Room*> visited;
 	std::vector<Room*> route;
-	Room* current = currentRoom;
+	Room* previous = currentRoom;
 
 	route.push_back(currentRoom);
 	bool foundUp = false;
 
 	while (!route.empty() && !foundUp){
-		steps++;
 		Room* room = route.back();
 		route.pop_back();
 
@@ -39,7 +38,11 @@ void ZilverenCompass::use(Room* currentRoom){
 			else if (std::find(visited.begin(), visited.end(), a.second.second) == visited.end() && std::find(route.begin(), route.end(), a.second.second) == route.end()){
 				route.push_back(a.second.second);
 			}
+			else if (a.second.second == previous){
+				steps++;
+			}
 		}
+		previous = room;
 	}
 	//voor elke kamer op niveu level van kamer
 	cout << "The stairs up are " << steps << " steps away" << endl;
