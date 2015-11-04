@@ -106,10 +106,10 @@ bool Generator::createDungeon(){
 		for (size_t z = 0; z < dungeon.size(); z++)
 		{
 			if (z != dungeon.size()-1) {
-				int randomWidthUp = rand() % (height - 1 + 1) + 0;
-				int randomHeightUp = rand() % (width - 1 + 1) + 0;
-				int randomWidthDown = rand() % (height - 1 + 1) + 0;
-				int randomHeightDown = rand() % (width - 1 + 1) + 0;
+				int randomWidthUp = rand() % (height) + 0;
+				int randomHeightUp = rand() % (width) + 0;
+				int randomWidthDown = rand() % (height) + 0;
+				int randomHeightDown = rand() % (width) + 0;
 
 
 				Room *current = &dungeon[z][randomWidthUp][randomHeightUp];
@@ -119,15 +119,23 @@ bool Generator::createDungeon(){
 			}
 		}
 	}
-	
-	startRoom = &dungeon[0][0][0];
-	endRoom = &dungeon[depth - 1][height - 1][width - 1];
+
+	int randomStartY = rand() % (height) + 0;
+	int randomStartX = rand() % (width) + 0;
+
+	std::vector<Enemy*> empty;
+	endRoom = &dungeon[depth - 1][randomStartY][randomStartX];
 
 	for (auto &neigh : endRoom->getNeighbours()){
 		neigh.second.second->setEnemies(createEndEnemy());
 	}
-	std::vector<Enemy*> empty;
 	endRoom->setEnemies(empty);
+
+	randomStartY = rand() % (height)+0;
+	randomStartX = rand() % (width)+0;
+
+	startRoom = &dungeon[0][randomStartY][randomStartX];
+	startRoom->setEnemies(empty);
 
 	return true;
 }
@@ -259,7 +267,12 @@ void Generator::showMap(int currentDepth) {
 			middleStr += ". ";
 			downStr += "  ";
 			if(current->getState()->classname() != "UnvisitedRoomState"){
-				middleStr.replace(middleStr.length() - 2, 1, "N");
+				if (current == startRoom) {
+					middleStr.replace(middleStr.length() - 2, 1, "S");
+				}
+				else {
+					middleStr.replace(middleStr.length() - 2, 1, "N");
+				}
 
 				for (auto const& a : current->getNeighbours())
 				{
