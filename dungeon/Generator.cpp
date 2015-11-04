@@ -101,6 +101,8 @@ bool Generator::createDungeon(){
 		}
 	}
 
+	startRoom = &dungeon[0][0][0];
+
 	//Stairs
 	if (dungeon.size() > 1) {
 		for (size_t z = 0; z < dungeon.size(); z++)
@@ -113,6 +115,13 @@ bool Generator::createDungeon(){
 
 
 				Room *current = &dungeon[z][randomWidthUp][randomHeightUp];
+
+				while (current == startRoom){
+					randomWidthUp = rand() % (height - 1 + 1) + 0;
+					randomHeightUp = rand() % (width - 1 + 1) + 0;
+					current = &dungeon[z][randomWidthUp][randomHeightUp];
+				}
+
 				Room *neighbor = &dungeon[z+1][randomWidthDown][randomHeightDown];
 				current->setNeighbours(Exits::UP, std::pair<string, Room*>("Up", neighbor));
 				neighbor->setNeighbours(Exits::DOWN, std::pair<string, Room*>("Down", current));
@@ -120,7 +129,7 @@ bool Generator::createDungeon(){
 		}
 	}
 	
-	startRoom = &dungeon[0][0][0];
+	
 	endRoom = &dungeon[depth - 1][height - 1][width - 1];
 
 	for (auto &neigh : endRoom->getNeighbours()){
@@ -259,7 +268,12 @@ void Generator::showMap(int currentDepth) {
 			middleStr += ". ";
 			downStr += "  ";
 			if(current->getState()->classname() != "UnvisitedRoomState"){
-				middleStr.replace(middleStr.length() - 2, 1, "N");
+				if (current == startRoom){
+					middleStr.replace(middleStr.length() - 2, 1, "S");
+				}
+				else{
+					middleStr.replace(middleStr.length() - 2, 1, "N");
+				}
 
 				for (auto const& a : current->getNeighbours())
 				{
