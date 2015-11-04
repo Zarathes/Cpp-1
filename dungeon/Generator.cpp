@@ -105,6 +105,26 @@ bool Generator::createDungeon(){
 		}
 	}
 
+	int randomStartY = rand() % (height)+0;
+	int randomStartX = rand() % (width)+0;
+
+	std::vector<Enemy*> empty;
+	startRoom = &dungeon[0][randomStartY][randomStartX];
+	startRoom->setEnemies(empty);
+	startRoom->setTrap(nullptr);
+
+	while (endRoom == startRoom || endRoom == nullptr){
+		randomStartY = rand() % (height)+0;
+		randomStartX = rand() % (width)+0;
+
+		endRoom = &dungeon[depth - 1][randomStartY][randomStartX];
+	}
+
+	for (auto &neigh : endRoom->getNeighbours()){
+		neigh.second.second->setEnemies(createEndEnemy());
+	}
+	endRoom->setEnemies(empty);
+
 	//Stairs
 	if (dungeon.size() > 1) {
 		for (size_t z = 0; z < dungeon.size(); z++)
@@ -118,7 +138,7 @@ bool Generator::createDungeon(){
 
 				Room *current = &dungeon[z][randomWidthUp][randomHeightUp];
 
-				while (current == startRoom){
+				while (current == startRoom || current == endRoom){
 					randomWidthUp = rand() % (height - 1 + 1) + 0;
 					randomHeightUp = rand() % (width - 1 + 1) + 0;
 					current = &dungeon[z][randomWidthUp][randomHeightUp];
@@ -130,24 +150,6 @@ bool Generator::createDungeon(){
 			}
 		}
 	}
-
-	int randomStartY = rand() % (height) + 0;
-	int randomStartX = rand() % (width) + 0;
-
-	std::vector<Enemy*> empty;
-	endRoom = &dungeon[depth - 1][randomStartY][randomStartX];
-
-	for (auto &neigh : endRoom->getNeighbours()){
-		neigh.second.second->setEnemies(createEndEnemy());
-	}
-	endRoom->setEnemies(empty);
-
-	randomStartY = rand() % (height)+0;
-	randomStartX = rand() % (width)+0;
-
-	startRoom = &dungeon[0][randomStartY][randomStartX];
-	startRoom->setEnemies(empty);
-	startRoom->setTrap(nullptr);
 
 	return true;
 }
