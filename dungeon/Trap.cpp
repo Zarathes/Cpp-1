@@ -24,5 +24,6 @@ int Trap::getPerceptionLevel() {
 }
 
 int Trap::getAttackPower() {
+	std::cout << description << std::endl;
 	return attackPower;
 }

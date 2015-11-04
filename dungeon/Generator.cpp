@@ -274,8 +274,7 @@ Trap* Generator::createTrap() {
 		string attackPointsString = read.randomNize(attackPointsEnemy);
 		string perceptionPointsString = read.randomNize(attackPointsItem);
 
-		string trapDescription = "Description: ";
-		trapDescription += "You triggered a " + trapNameInput + " and were hit for " + attackPointsString + " damage.";
+		string trapDescription = "You triggered a " + trapNameInput + " trap and were hit for " + attackPointsString + " damage.";
 		return new Trap(trapNameInput, trapDescription, atoi(attackPointsString.c_str()), atoi(perceptionPointsString.c_str()));
 	}
 
