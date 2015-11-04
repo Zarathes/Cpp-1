@@ -11,7 +11,10 @@ namespace TYPES
 		VIEW_MAP,
 		VIEW_HERO,
 		CHANGE_ROOM,
-		GET_ITEMS
+		GET_ITEMS,
+		TALISMAN,
+		GRANATE,
+		COMPASS
 	};
 };
 

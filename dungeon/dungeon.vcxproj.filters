@@ -108,6 +108,15 @@
     <ClInclude Include="Exits.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Talisman.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZilverenCompass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Granate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -168,6 +177,15 @@
       <Filter>Source Files\Room</Filter>
     </ClCompile>
     <ClCompile Include="Generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Talisman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZilverenCompass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Granate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

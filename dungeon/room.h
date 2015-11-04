@@ -25,7 +25,6 @@ public:
 	void enteringRoom();
 	void setNeighbours(Exits exit, std::pair<std::string, Room*> room);
 	void setEnemies(std::vector<Enemy*> newEnemies);
-	void deleteEnemy(Enemy enemy);
 	int getDepth();
 	void setDepth(int d);
 	void setEquipableItems(std::vector<Equipable*> newItems);
@@ -44,7 +43,7 @@ public:
 
 	void SetCommand(TYPES::ACTION_LIST command);
 	void Execute();
-
+	int getRoomLevel();
 	~Room();
 
 private:

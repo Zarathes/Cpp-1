@@ -128,3 +128,51 @@ public:
 		reciever->Execute();
 	}
 };
+
+class TalismanCommand : public Command
+{
+public:
+	TalismanCommand(Reciever *reciever)
+		: Command(reciever, "Change Room")
+	{
+
+	}
+
+	void Execute()
+	{
+		reciever->SetCommand(TYPES::ACTION_LIST::TALISMAN);
+		reciever->Execute();
+	}
+};
+
+class GranateCommand : public Command
+{
+public:
+	GranateCommand(Reciever *reciever)
+		: Command(reciever, "Change Room")
+	{
+
+	}
+
+	void Execute()
+	{
+		reciever->SetCommand(TYPES::ACTION_LIST::GRANATE);
+		reciever->Execute();
+	}
+};
+
+class CompassCommand : public Command
+{
+public:
+	CompassCommand(Reciever *reciever)
+		: Command(reciever, "Change Room")
+	{
+
+	}
+
+	void Execute()
+	{
+		reciever->SetCommand(TYPES::ACTION_LIST::COMPASS);
+		reciever->Execute();
+	}
+};

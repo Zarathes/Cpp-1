@@ -19,6 +19,7 @@ std::map<int, pair<TYPES::ACTION_LIST, string>> InfestedRoomState::getCommands()
 	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(3, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::VIEW_HERO, "View Hero")));
 	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(4, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::SEE_BAG, "See Bag")));
 	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(5, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::VIEW_MAP, "View Map")));
+	commands.insert(pair<int, pair<TYPES::ACTION_LIST, string>>(6, pair<TYPES::ACTION_LIST, string>(TYPES::ACTION_LIST::GRANATE, "Granate")));
 	return commands;
 }
 

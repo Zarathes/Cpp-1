@@ -17,6 +17,9 @@ using std::out_of_range;
 
 Hero::Hero() : Character("Hero"){
 	rooms = std::stack<Room*>();
+	talisman = Talisman();
+	granate = Granate();
+	compass = ZilverenCompass();
 	lifePoints = 250;
 	level = 0;
 	alive = true;
@@ -244,6 +247,25 @@ void Hero::getItems() {
 	}
 }
 
+void Hero::setDungeon(std::vector< std::vector< std::vector<Room> > > newDungeon){
+	dungeon = newDungeon;
+	talisman.setDungeon(dungeon);
+	granate.setDungeon(dungeon);
+	compass.setDungeon(dungeon);
+}
+
+void Hero::useTalisman(){
+	talisman.use(currentRoom);
+}
+
+void Hero::useGranate(){
+	granate.use(currentRoom);
+}
+
+void Hero::useCompass(){
+	compass.use(currentRoom);
+}
+
 void Hero::Execute(){
 	switch (currentCommand) {
 	case TYPES::ACTION_LIST::VIEW_HERO:
@@ -263,6 +285,15 @@ void Hero::Execute(){
 		break;
 	case TYPES::ACTION_LIST::FIGHT:
 		fight();
+		break;
+	case TYPES::ACTION_LIST::TALISMAN:
+		useTalisman();
+		break;
+	case TYPES::ACTION_LIST::GRANATE:
+		useGranate();
+		break;
+	case TYPES::ACTION_LIST::COMPASS:
+		useCompass();
 		break;
 	}
 }

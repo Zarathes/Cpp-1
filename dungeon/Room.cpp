@@ -75,10 +75,6 @@ void Room::setEnemies(std::vector<Enemy*> newEnemies) {
 	enemies = newEnemies;
 }
 
-void Room::deleteEnemy(Enemy enemy) {
-	//enemies.erase(std::remove(enemies.begin(), enemies.end(), enemy), enemies.end());
-}
-
 void Room::setEquipableItems(std::vector<Equipable*> newItems) {
 	equipableItems = newItems;
 }
@@ -172,6 +168,10 @@ int Room::getDepth() {
 
 void Room::setDepth(int d) {
 	 depth = d;
+}
+
+int Room::getRoomLevel(){
+	return level;
 }
 
 

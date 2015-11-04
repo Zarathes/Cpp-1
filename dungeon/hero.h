@@ -5,6 +5,9 @@
 #include "room.h"
 #include <vector>
 #include <stack>
+#include "Talisman.h"
+#include "Granate.h"
+#include "ZilverenCompass.h"
 
 class Hero: public Character{
 public:
@@ -20,11 +23,16 @@ public:
 	bool living();
 	void SetCommand(TYPES::ACTION_LIST command);
 	void Execute();
+	void setDungeon(std::vector< std::vector< std::vector<Room> > > newDungeon);
 private:
 	int experiancePoints;
 	int perceptionPoints;
 	int level;
+	std::vector< std::vector< std::vector<Room> > > dungeon;
 
+	void useCompass();
+	void useGranate();
+	void useTalisman();
 	void checkLevel();
 	std::vector<Consumable*> consumable;
 	std::vector<Equipable*> equipment;
@@ -33,6 +41,9 @@ private:
 
 	int currentLevel;
 
+	ZilverenCompass compass;
+	Granate granate;
+	Talisman talisman;
 	void getItems();
 	Room *currentRoom;
 };

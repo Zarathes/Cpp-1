@@ -68,6 +68,7 @@ bool Game::generateDungeon() {
 }
 
 void Game::start(){
+	hero->setDungeon(dungenGenerator->getDungeon());
 	while (running) {
 		commands = hero->getCurrentRoom()->getCommands();
 		handelCommand();
@@ -139,6 +140,15 @@ void Game::handelCommand()
 				break;
 			case TYPES::ACTION_LIST::GET_ITEMS:
 				GetItemsCommand(hero).Execute();
+				break;
+			case TYPES::ACTION_LIST::TALISMAN:
+				TalismanCommand(hero).Execute();
+				break;
+			case TYPES::ACTION_LIST::GRANATE:
+				GranateCommand(hero).Execute();
+				break;
+			case TYPES::ACTION_LIST::COMPASS:
+				CompassCommand(hero).Execute();
 				break;
 			}			
 		}

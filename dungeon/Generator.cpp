@@ -48,7 +48,7 @@ bool Generator::createDungeon(){
 			// height
 			for (auto &c : b) {
 				c.setDescription(createDescription());
-				c.setEnemies(createEnemies());
+			//	c.setEnemies(createEnemies());
 				c.setConsumableItems(createConsumableItems());
 				c.setEquipableItems(createEquipableItems());
 			}
@@ -331,4 +331,8 @@ Room* Generator::getStartRoom() {
 
 Room* Generator::getEndRoom(){
 	return endRoom;
+}
+
+std::vector< std::vector< std::vector<Room> > > Generator::getDungeon(){
+	return dungeon;
 }

@@ -10,6 +10,7 @@ public:
 	bool createDungeon();
 	Room* getStartRoom();
 	Room* getEndRoom();
+	std::vector< std::vector< std::vector<Room> > > getDungeon();
 	void showMap(int CurrentLevel);
 private:
 	std::vector<std::string> size;
