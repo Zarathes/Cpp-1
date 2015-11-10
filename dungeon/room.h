@@ -33,6 +33,8 @@ public:
 	std::vector<Consumable*> getConsumableItems();
 	Room* getNeighbour(Exits exit);
 	std::map<Exits, std::pair<std::string, Room*>> getNeighbours();
+	void setTrap(Trap* trap);
+	int triggerTrap(int perception);
 
 	int fight();
 	int attackEnemies(int attackPoints);
@@ -56,7 +58,7 @@ private:
 	std::vector<Enemy*> enemies;
 	std::vector<Equipable*> equipableItems;
 	std::vector<Consumable*> consumableItems;
-	Trap trap;
+	Trap* trap;
 
 	TYPES::ACTION_LIST currentCommand;
 };

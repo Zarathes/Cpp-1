@@ -60,6 +60,7 @@ bool Game::generateDungeon() {
 
 	dungenGenerator = new Generator(levels, width, height);
 	if (dungenGenerator->createDungeon()) {
+		cout << endl;
 		hero->insertCurrentRoom(dungenGenerator->getStartRoom());
 		endRoom = dungenGenerator->getEndRoom();
 		return true;
@@ -72,10 +73,10 @@ void Game::start(){
 	while (running) {
 		commands = hero->getCurrentRoom()->getCommands();
 		handelCommand();
-		//leef ik nog?
 		if (running = hero->living()){
 			running = !finished();
 		}
+		cout << endl;
 	}
 	cin.get();
 }
@@ -114,7 +115,7 @@ void Game::handelCommand()
 
 	try {
 		if (commands.find(command) != commands.end()) {
-			cout << "Your command is: " << commands[command].second << "." << endl;
+			//cout << "Your command is: " << commands[command].second << "." << endl;
 
 			switch (commands[command].first) {
 			case TYPES::ACTION_LIST::FIGHT:

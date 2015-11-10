@@ -1,7 +1,9 @@
-#include "room.h"
 #include <iostream>
-#include "ReadTextFile.h"
 #include <vector>
+
+#include "ReadTextFile.h"
+#include "room.h"
+#include "Trap.h"
 
 
 class Generator{
@@ -26,6 +28,9 @@ private:
 	std::vector<std::string> consumbableNames;
 	std::vector<std::string> equipableNames;
 	std::vector<std::string> attackPointsItem;
+	
+	std::vector<std::string> traps;
+	std::vector<std::string> trapDescription;
 
 	int mapLevel;
 
@@ -43,5 +48,6 @@ private:
 	std::vector<Enemy*> createEndEnemy();
 	std::vector<Consumable*> createConsumableItems();
 	std::vector<Equipable*> createEquipableItems();
+	Trap* createTrap();
 	std::vector<Exits> createExit(int width, int height);
 };

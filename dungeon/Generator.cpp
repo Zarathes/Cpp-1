@@ -38,6 +38,9 @@ Generator::Generator(int d, int w, int h)
 	equipableNames = read.readFile("config/EquipableNames.txt");
 	consumbableNames = read.readFile("config/ConsumableNames.txt");
 	attackPointsItem = read.readFile("config/itemPoints.txt");
+
+	traps = read.readFile("config/TrapNames.txt");
+	trapDescription = read.readFile("config/TrapDescription.txt");
 }
 
 bool Generator::createDungeon(){
@@ -51,6 +54,7 @@ bool Generator::createDungeon(){
 			//	c.setEnemies(createEnemies());
 				c.setConsumableItems(createConsumableItems());
 				c.setEquipableItems(createEquipableItems());
+				c.setTrap(createTrap());
 			}
 		}
 	}
@@ -101,22 +105,40 @@ bool Generator::createDungeon(){
 		}
 	}
 
-	startRoom = &dungeon[0][0][0];
+	int randomStartY = rand() % (height)+0;
+	int randomStartX = rand() % (width)+0;
+
+	std::vector<Enemy*> empty;
+	startRoom = &dungeon[0][randomStartY][randomStartX];
+	startRoom->setEnemies(empty);
+	startRoom->setTrap(nullptr);
+
+	while (endRoom == startRoom || endRoom == nullptr){
+		randomStartY = rand() % (height)+0;
+		randomStartX = rand() % (width)+0;
+
+		endRoom = &dungeon[depth - 1][randomStartY][randomStartX];
+	}
+
+	for (auto &neigh : endRoom->getNeighbours()){
+		neigh.second.second->setEnemies(createEndEnemy());
+	}
+	endRoom->setEnemies(empty);
 
 	//Stairs
 	if (dungeon.size() > 1) {
 		for (size_t z = 0; z < dungeon.size(); z++)
 		{
 			if (z != dungeon.size()-1) {
-				int randomWidthUp = rand() % (height - 1 + 1) + 0;
-				int randomHeightUp = rand() % (width - 1 + 1) + 0;
-				int randomWidthDown = rand() % (height - 1 + 1) + 0;
-				int randomHeightDown = rand() % (width - 1 + 1) + 0;
+				int randomWidthUp = rand() % (height) + 0;
+				int randomHeightUp = rand() % (width) + 0;
+				int randomWidthDown = rand() % (height) + 0;
+				int randomHeightDown = rand() % (width) + 0;
 
 
 				Room *current = &dungeon[z][randomWidthUp][randomHeightUp];
 
-				while (current == startRoom){
+				while (current == startRoom || current == endRoom){
 					randomWidthUp = rand() % (height - 1 + 1) + 0;
 					randomHeightUp = rand() % (width - 1 + 1) + 0;
 					current = &dungeon[z][randomWidthUp][randomHeightUp];
@@ -128,15 +150,6 @@ bool Generator::createDungeon(){
 			}
 		}
 	}
-	
-	
-	endRoom = &dungeon[depth - 1][height - 1][width - 1];
-
-	for (auto &neigh : endRoom->getNeighbours()){
-		neigh.second.second->setEnemies(createEndEnemy());
-	}
-	std::vector<Enemy*> empty;
-	endRoom->setEnemies(empty);
 
 	return true;
 }
@@ -158,7 +171,7 @@ vector<Exits> Generator::createExit(int y, int x) {
 		possibleExits.push_back(Exits::EAST);
 	}
 
-	int randNum = 1 + (rand() % (int)(possibleExits.size() - 2 + 1));
+	int randNum = 1 + (rand() % (int)(possibleExits.size()));
 
 	for (int i = 0; i < randNum; i++) {
 		int randExit = 0 + (rand() % (int)(possibleExits.size()-1 - 0 + 1));
@@ -253,6 +266,21 @@ vector<Equipable*> Generator::createEquipableItems(){
 	return infestation;
 }
 
+Trap* Generator::createTrap() {
+	int randNum = rand() % 5;
+
+	if (randNum == 0) {
+		string trapNameInput = read.randomNize(traps);
+		string attackPointsString = read.randomNize(attackPointsEnemy);
+		string perceptionPointsString = read.randomNize(attackPointsItem);
+
+		string trapDescription = "You triggered a " + trapNameInput + " trap and were hit for " + attackPointsString + " damage.";
+		return new Trap(trapNameInput, trapDescription, atoi(attackPointsString.c_str()), atoi(perceptionPointsString.c_str()));
+	}
+
+	return nullptr;
+}
+
 void Generator::showMap(int currentDepth) {
 	string upStr;
 	string middleStr;
@@ -268,10 +296,10 @@ void Generator::showMap(int currentDepth) {
 			middleStr += ". ";
 			downStr += "  ";
 			if(current->getState()->classname() != "UnvisitedRoomState"){
-				if (current == startRoom){
+				if (current == startRoom) {
 					middleStr.replace(middleStr.length() - 2, 1, "S");
 				}
-				else{
+				else {
 					middleStr.replace(middleStr.length() - 2, 1, "N");
 				}
 
@@ -300,7 +328,6 @@ void Generator::showMap(int currentDepth) {
 						break;
 					default:
 						break;
-
 					}
 				}
 			}

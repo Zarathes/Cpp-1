@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -155,6 +155,7 @@
     <Text Include="config\roomType.txt" />
     <Text Include="config\size.txt" />
     <Text Include="config\state.txt" />
+    <Text Include="config\TrapNames.txt" />
     <Text Include="lifePoints.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
@@ -218,6 +219,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Talisman.cpp" />
+    <ClCompile Include="Trap.cpp" />
     <ClCompile Include="UnvisitedRoomState.cpp" />
     <ClCompile Include="ZilverenCompass.cpp" />
   </ItemGroup>

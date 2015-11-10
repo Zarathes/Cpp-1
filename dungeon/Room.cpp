@@ -49,9 +49,11 @@ void Room::enteringRoom(){
 		std::map<Exits, std::pair<std::string, Room*>>::iterator temp = neighbors.begin();
 
 		while (temp != neighbors.end()){
-			cout << temp->second.first << endl;			
+			cout << temp->second.first << "   ";			
 			++temp;
 		}
+		cout << endl;
+		cout << endl;
 	}
 	else{
 		currentState = new InfestedRoomState();
@@ -59,6 +61,22 @@ void Room::enteringRoom(){
 		for (int i = 0; i < enemies.size(); i++){
 			cout << enemies[i]->getName() << "  " << enemies[i]->getLifePoints() << endl;
 		}
+	}
+}
+
+int Room::triggerTrap(int perception) {
+	if (trap != nullptr) {
+		if (perception > trap->getPerceptionLevel()) {
+			cout << "You spotted a " << trap->getName() << " trap and disarmed it." << endl;
+			delete trap;
+			return 0;
+		}
+		else {
+			return trap->getAttackPower();
+		}
+	}
+	else {
+		return 0;
 	}
 }
 
@@ -170,8 +188,8 @@ void Room::setDepth(int d) {
 	 depth = d;
 }
 
-int Room::getRoomLevel(){
-	return level;
+void Room::setTrap(Trap* t) {
+	trap = t;
 }
 
 

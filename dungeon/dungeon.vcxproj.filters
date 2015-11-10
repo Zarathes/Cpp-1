@@ -188,6 +188,9 @@
     <ClCompile Include="Granate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Trap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -205,5 +208,6 @@
     <Text Include="config\endBossNames.txt" />
     <Text Include="config\endBossAttack.txt" />
     <Text Include="config\endBossLife.txt" />
+    <Text Include="config\TrapNames.txt" />
   </ItemGroup>
 </Project>

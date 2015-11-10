@@ -17,6 +17,7 @@ using std::out_of_range;
 
 Hero::Hero() : Character("Hero"){
 	rooms = std::stack<Room*>();
+	equipment.push_back(new Equipable("fist",5));
 	talisman = Talisman();
 	granate = Granate();
 	compass = ZilverenCompass();
@@ -29,6 +30,8 @@ void Hero::insertCurrentRoom(Room *room){
 	rooms.push(room);
 	currentRoom = room;
 	currentRoom->enteringRoom();
+
+	underAttack(currentRoom->triggerTrap(perceptionPoints));
 }
 
 Room* Hero::getCurrentRoom(){
@@ -190,7 +193,10 @@ void Hero::fight(){
 				delete consumable[command];
 				consumable.erase(consumable.begin()+command);
 			}
-			underAttack(currentRoom->fight());
+			int damage = currentRoom->fight();
+			cout << "The enemies attacked you, youre damage is " << damage << endl;
+			underAttack(damage);
+			cout << endl;
 			currentRoom->enteringRoom();
 		}
 		else {
@@ -225,6 +231,7 @@ void Hero::getItems() {
 	//get items en doe ze in bag
 	if (currentRoom->getConsumableItems().empty() && currentRoom->getEquipableItems().empty()) {
 		cout << "No items to get" << endl;
+		cout << endl;
 		currentRoom->enteringRoom();
 	}
 	else {
